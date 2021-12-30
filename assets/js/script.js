@@ -55,6 +55,8 @@ function dealCards() {
         myHand[i] = deck.pop();
     }
     renderHand(myHand);
+    document.getElementById("btn-deal").style.display = "none";
+    document.getElementById("btn-draw").style.display = "inline-block";
 }
 
 
@@ -71,6 +73,11 @@ function renderHand(hand) {
         value.innerHTML = hand[i].value;
         card.appendChild(value);
         card.appendChild(suit);
+        //click event to hold a card
+        card.addEventListener("click", function () {
+            this.classList.toggle("selected");
+        });
+
         document.getElementById("card-table").appendChild(card);
     }
 }

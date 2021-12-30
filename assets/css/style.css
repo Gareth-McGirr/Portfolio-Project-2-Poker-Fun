@@ -18,6 +18,9 @@ main{
     border-style: solid;
     border-width: medium;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .card
@@ -62,6 +65,12 @@ main{
 	background-position-y:100px;
 }
 
+.selected {
+    margin-top: 5px;
+    margin-bottom: 36px;
+    
+}
+
 .game-controls-area{
     min-height: 50px;
     background-color: white;
@@ -78,6 +87,13 @@ main{
 }
 button{
     font-size: 20px;
+}
+
+#btn-deal{
+
+}
+#btn-draw{
+    display: none;
 }
 
 
