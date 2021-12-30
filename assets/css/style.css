@@ -1,0 +1,26 @@
+header{
+    min-height: 100px;
+    background-color: black;
+    color: white;    
+}
+
+main{
+    height: 500px;
+}
+
+.top-content{
+    min-height: 50px;
+}
+
+.card-table{
+    min-height: 200px;
+    background-color: green;
+    border-style: solid;
+    border-width: medium;
+}
+
+.game-controls{
+    min-height: 50px;
+    background-color: green;
+}
+
