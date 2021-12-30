@@ -66,13 +66,18 @@ function renderHand(hand) {
         let card = document.createElement("div");
         let value = document.createElement("div");
         let suit = document.createElement("div");
+        let hold = document.createElement("div");
         card.className = "card dealt-card";
         value.className = "value";
         suit.className = "suit " + hand[i].suit;
+        hold.className = "hold";
 
         value.innerHTML = hand[i].value;
+        hold.innerHTML = "Hold";
         card.appendChild(value);
         card.appendChild(suit);
+        card.appendChild(hold);
+        
         //click event to hold a card
         card.addEventListener("click", function () {
             this.classList.toggle("selected");

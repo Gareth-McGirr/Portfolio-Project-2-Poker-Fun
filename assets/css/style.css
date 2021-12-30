@@ -1,19 +1,19 @@
-header{
+header {
     min-height: 100px;
     background-color: black;
-    color: white;    
+    color: white;
 }
 
-main{
+main {
     height: 500px;
 }
 
-.top-content{
+.top-content {
     min-height: 50px;
 }
 
-#card-table{
-    min-height: 200px;
+#card-table {
+    min-height: 250px;
     background-color: green;
     border-style: solid;
     border-width: medium;
@@ -23,81 +23,83 @@ main{
     justify-content: center;
 }
 
-.card
-{
-	padding: 10px;
-	border: solid 1px #808080;
-	background-color: white;
-	display: inline-block;
-	border-radius: 10px;
-	font-size: 14pt;
-	text-align: center;
-	color:black;
-	margin: 20px;
+.card {
+    padding: 10px;
+    border: solid 1px #808080;
+    background-color: white;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 14pt;
+    text-align: center;
+    color: black;
+    margin: 20px;
     margin-top: 30px;
+    max-height: 140px;
 }
 
-.card .value{
-	font-size:15pt;
-	font-family: sans-serif;
+.card .value {
+    font-size: 15pt;
+    font-family: sans-serif;
 }
 
-.card .suit
-{
-	background-image: url('../images/card_suits.png');
-	height: 100px;
-	width: 90px;
+.card .suit {
+    background-image: url('../images/card_suits.png');
+    height: 100px;
+    width: 90px;
 }
 
-.card .diamonds
-{
-	background-position-y: 100px;
+.card .diamonds {
+    background-position-y: 100px;
 }
 
-.card .hearts
-{
-	background-position-x: 90px;
+.card .hearts {
+    background-position-x: 90px;
 }
 
-.card .clubs
-{
-	background-position-x:90px;
-	background-position-y:100px;
+.card .clubs {
+    background-position-x: 90px;
+    background-position-y: 100px;
 }
 
 .selected {
     margin-top: 5px;
     margin-bottom: 36px;
-    
 }
 
-.game-controls-area{
+.hold {
+    display: none;
+}
+
+.selected .hold {
+    display: block;
+}
+
+.game-controls-area {
     min-height: 50px;
     background-color: white;
-    
-    
+
+
 }
 
-.game-controls{
+.game-controls {
     display: inline-block;
     width: 45%;
     padding-top: 40px;
     font-size: 20px;
     text-align: center;
 }
-button{
+
+button {
     font-size: 20px;
 }
 
-#btn-deal{
+#btn-deal {}
 
-}
-#btn-draw{
+#btn-draw {
     display: none;
 }
 
 
-#bet-amount{
+#bet-amount {
     width: 50px;
 }
-
