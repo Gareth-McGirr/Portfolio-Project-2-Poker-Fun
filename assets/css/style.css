@@ -17,6 +17,7 @@ main{
     background-color: green;
     border-style: solid;
     border-width: medium;
+    text-align: center;
 }
 
 .card
@@ -29,7 +30,7 @@ main{
 	font-size: 14pt;
 	text-align: center;
 	color:black;
-	margin: 3px;
+	margin: 20px;
     margin-top: 30px;
 }
 
@@ -73,6 +74,7 @@ main{
     width: 45%;
     padding-top: 40px;
     font-size: 20px;
+    text-align: center;
 }
 button{
     font-size: 20px;
