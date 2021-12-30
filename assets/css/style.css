@@ -19,8 +19,25 @@ main{
     border-width: medium;
 }
 
-.game-controls{
+.game-controls-area{
     min-height: 50px;
-    background-color: green;
+    background-color: white;
+    
+    
+}
+
+.game-controls{
+    display: inline-block;
+    width: 45%;
+    padding-top: 40px;
+    font-size: 20px;
+}
+button{
+    font-size: 20px;
+}
+
+
+#bet-amount{
+    width: 50px;
 }
 
