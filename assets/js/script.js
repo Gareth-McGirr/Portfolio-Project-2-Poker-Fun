@@ -5,7 +5,7 @@ let myHand = new Array();
 
 //event listeners
 document.getElementById("btn-deal").addEventListener("click", dealCards);
-
+document.getElementById("btn-draw").addEventListener("click", drawCards);
 
 /**
  * creates a deck of 52 card objects using values and suits
@@ -58,6 +58,29 @@ function dealCards() {
     document.getElementById("btn-deal").style.display = "none";
     document.getElementById("btn-draw").style.display = "inline-block";
 }
+
+/**
+ * creates a new 5 card hand from held cards plus draw new cards from deck
+ */
+function drawCards() {
+    
+    let myHeldCards = new Array();
+    let drawnCards = document.getElementsByClassName("dealt-card");
+    
+    for (let i = 0; i < 5; i++) {
+        if (drawnCards[i].classList.contains("selected")) {
+            myHeldCards.push(myHand[i])
+        }
+    }
+
+    for (let i = myHeldCards.length; i < 5; i++) {
+        myHeldCards[i] = deck.pop();
+    }
+    renderHand(myHeldCards);
+    document.getElementById("btn-deal").style.display = "inline-block";
+    document.getElementById("btn-draw").style.display = "none";
+}
+
 
 
 function renderHand(hand) {
