@@ -12,11 +12,53 @@ main{
     min-height: 50px;
 }
 
-.card-table{
+#card-table{
     min-height: 200px;
     background-color: green;
     border-style: solid;
     border-width: medium;
+}
+
+.card
+{
+	padding: 10px;
+	border: solid 1px #808080;
+	background-color: white;
+	display: inline-block;
+	border-radius: 10px;
+	font-size: 14pt;
+	text-align: center;
+	color:black;
+	margin: 3px;
+    margin-top: 30px;
+}
+
+.card .value{
+	font-size:15pt;
+	font-family: sans-serif;
+}
+
+.card .suit
+{
+	background-image: url('../images/card_suits.png');
+	height: 100px;
+	width: 90px;
+}
+
+.card .diamonds
+{
+	background-position-y: 100px;
+}
+
+.card .hearts
+{
+	background-position-x: 90px;
+}
+
+.card .clubs
+{
+	background-position-x:90px;
+	background-position-y:100px;
 }
 
 .game-controls-area{
