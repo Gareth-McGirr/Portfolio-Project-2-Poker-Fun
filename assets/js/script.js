@@ -30,9 +30,24 @@ function getDeck() {
     return deck;
 }
 
-/** Takes 5 cards from top of deck 
+/**
+ * Shuffle the deck by switching two random cards for 1000 turns
+ */
+function shuffle() {
+    
+    for (let i = 0; i < 1000; i++) {
+        let location1 = Math.floor((Math.random() * deck.length));
+        let location2 = Math.floor((Math.random() * deck.length));
+        let tmp = deck[location1];
+
+        deck[location1] = deck[location2];
+        deck[location2] = tmp;
+    }
+}
+
+/** 
+ * Takes 5 cards from top of deck 
  * and adds to players hand 
- * 
  */
 function dealCards() {
 
@@ -62,6 +77,7 @@ function renderHand(hand) {
 
 function load() {
     deck = getDeck();
+    shuffle();
 }
 
 window.onload = load;
