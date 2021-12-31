@@ -202,7 +202,33 @@ function isThreeOfKind(values) {
     }
 }
 
+/**
+ * Checks if first 2 values in array are equal
+ * @param {Array} values 
+ * @returns {Boolean}
+ */
+function isPair(values) {
+    if(values[0] === values[1]){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
+/**
+ * Checks if values in array have 2 pairs
+ * @param {Array} values 
+ * @returns {Boolean}
+ */
+ function isTwoPair(values) {
+    if(values[0] === values[1] && values[2] === values[3])   {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 function load() {
     deck = getDeck();
     shuffle();
