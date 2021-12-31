@@ -141,6 +141,38 @@ function isFlush(cards) {
     return true;
 }
 
+/**
+ * 
+ * @param {Array} cards 
+ * @returns {Array} values
+ */
+function sortCardsByValue(cards) {
+    let values = new Array();
+    for (i = 0; i < cards.length; i++) {
+        switch (cards[i].value) {
+            case 'A':
+                values.push(14);
+                break;
+            case 'K':
+                values.push(13);
+                break;
+            case 'Q':
+                values.push(12);
+                break;
+            case 'J':
+                values.push(11);
+                break;
+            default:
+                values.push(parseInt(cards[i].value));
+        }   
+    }
+    console.log(values);
+    values.sort(function(a, b){return a-b});
+    console.log(values);
+    console.log("----------------------------");
+    return values;
+}
+
 function load() {
     deck = getDeck();
     shuffle();
