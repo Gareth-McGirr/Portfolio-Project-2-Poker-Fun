@@ -143,7 +143,16 @@ function isFlush(cards) {
 }
 
 function isRoyalFlush(cards) {
-    if(isFlush(cards) && isStraight(sortCardsByValue(cards) && cards[0].value === "10")){
+    if(isStraightFlush(cards) && cards[0].value === "10"){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function isStraightFlush(cards) {
+    if(isFlush(cards) && isStraight(sortCardsByValue(cards))){
         return true;
     }
     else{
