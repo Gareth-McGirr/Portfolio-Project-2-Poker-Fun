@@ -142,6 +142,17 @@ function isFlush(cards) {
     return true;
 }
 
+function isRoyalFlush(cards) {
+    if(isFlush(cards) && isStraight(sortCardsByValue(cards) && cards[0].value === "10")){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+
+}
+
 /**
  * 
  * @param {Array} cards 
