@@ -14,7 +14,7 @@ document.getElementById("btn-draw").addEventListener("click", drawCards);
 function getDeck() {
     let cards = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     let suits = ["diamonds", "hearts", "spades", "clubs"];
-    
+
     let deck = new Array();
 
     for (let i = 0; i < suits.length; i++) {
@@ -34,7 +34,7 @@ function getDeck() {
  * Shuffle the deck by switching two random cards for 1000 turns
  */
 function shuffle() {
-    
+
     for (let i = 0; i < 1000; i++) {
         let location1 = Math.floor((Math.random() * deck.length));
         let location2 = Math.floor((Math.random() * deck.length));
@@ -58,7 +58,7 @@ function dealCards() {
     renderHand(myHand);
 
     //hide the deal button after the initial deal and display the draw button
-    document.getElementById("btn-deal").style.display = "none"; 
+    document.getElementById("btn-deal").style.display = "none";
     document.getElementById("btn-draw").style.display = "inline-block";
 }
 
@@ -70,7 +70,7 @@ function drawCards() {
     let myHeldCards = new Array();
     //get the cards that are dealt
     let drawnCards = document.getElementsByClassName("dealt-card");
-    
+
     // go through list of cards and add held cards to myHeldCards array
     for (let i = 0; i < 5; i++) {
         if (drawnCards[i].classList.contains("selected")) {
@@ -90,12 +90,15 @@ function drawCards() {
 }
 
 
+
+
 /**
  * creates images for each card in array of card objects 
  * and displays on the game table
- * @param {*} hand 
+ * @param {Array} hand 
+ * @param {boolean} isDeal 
  */
-function renderHand(hand) {
+function renderHand(hand, isDeal) {
     document.getElementById('card-table').innerHTML = '';
     for (let i = 0; i < hand.length; i++) {
         let card = document.createElement("div");
@@ -112,12 +115,14 @@ function renderHand(hand) {
         card.appendChild(value);
         card.appendChild(suit);
         card.appendChild(hold);
-        
-        //click event to hold a card
-        card.addEventListener("click", function () {
-            this.classList.toggle("selected");
-        });
 
+
+        //if it is the deal then add click event to each card displayed
+        if (isDeal) {
+            card.addEventListener("click", function () {
+                this.classList.toggle("selected");
+            });
+        }
         document.getElementById("card-table").appendChild(card);
     }
 }
