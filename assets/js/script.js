@@ -125,10 +125,11 @@ function renderHand(hand, isDeal) {
         }
         document.getElementById("card-table").appendChild(card);
     }
+    
 }
 
 /**
- * Checks if all the cards a=have the same suit
+ * Checks if all the cards have the same suit
  * and therefore is a flush
  * @param {Array} cards 
  * @returns Boolean
@@ -176,7 +177,7 @@ function sortCardsByValue(cards) {
 /**
  * Checks if the first 4 vales in array are equal
  * @param {Array} values 
- * @returns 
+ * @returns {Boolean} 
  */
 function isFourOfKind(values) {
     if(values[0] === values[1] && values[0] === values[2] && values[0] === values[3]){
@@ -185,8 +186,23 @@ function isFourOfKind(values) {
     else{
         return false;
     }
-
 }
+
+/**
+ * Checks if first 3 values in array are equal
+ * @param {Array} values 
+ * @returns {Boolean}
+ */
+function isThreeOfKind(values) {
+    if(values[0] === values[1] && values[0] === values[2]){
+        return true
+    }
+    else{
+        return false;
+    }
+}
+
+
 function load() {
     deck = getDeck();
     shuffle();
