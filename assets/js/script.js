@@ -222,13 +222,27 @@ function isPair(values) {
  * @returns {Boolean}
  */
  function isTwoPair(values) {
-    if(values[0] === values[1] && values[2] === values[3])   {
+    if(values[0] === values[1] && values[2] === values[3]){
         return true;
     }
     else{
         return false;
     }
 }
+
+function isStraight(values) {
+    
+    for(let i = 0; i < values.length-1; i++){
+        if(values[i] != values[i+1]+1){
+            return false;
+        }
+    }
+    return true;
+    
+    //to do: need code to check if straight is - A,2,3,4,5
+
+}
+
 function load() {
     deck = getDeck();
     shuffle();
