@@ -127,6 +127,20 @@ function renderHand(hand, isDeal) {
     }
 }
 
+/**
+ * Checks if all the cards a=have the same suit
+ * and therefore is a flush
+ * @param {Array} cards 
+ * @returns Boolean
+ */
+function isFlush(cards) {
+    for (let i = 0; i < (cards.length - 1); i++) {
+        if (cards[i].Suit != cards[i + 1].Suit)
+            return false;
+    }
+    return true;
+}
+
 function load() {
     deck = getDeck();
     shuffle();
