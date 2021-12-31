@@ -216,12 +216,22 @@ function isPair(values) {
     }
 }
 
+function isFullHouse(values){
+    let valuesReversed = values.slice().reverse();
+    if((isPair(values) && isThreeOfKind(valuesReversed)) || (isPair(valuesReversed) && isThreeOfKind(values))){
+        return true;
+    }
+    else{
+        return false;
+    }    
+}
+
 /**
  * Checks if values in array have 2 pairs
  * @param {Array} values 
  * @returns {Boolean}
  */
- function isTwoPair(values) {
+function isTwoPair(values) {
     if(values[0] === values[1] && values[2] === values[3]){
         return true;
     }
@@ -231,7 +241,7 @@ function isPair(values) {
 }
 
 function isStraight(values) {
-    
+
     for(let i = 0; i < values.length-1; i++){
         if(values[i] != values[i+1]+1){
             return false;
