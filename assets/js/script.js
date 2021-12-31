@@ -173,6 +173,20 @@ function sortCardsByValue(cards) {
     return values;
 }
 
+/**
+ * Checks if the first 4 vales in array are equal
+ * @param {Array} values 
+ * @returns 
+ */
+function isFourOfKind(values) {
+    if(values[0] === values[1] && values[0] === values[2] && values[0] === values[3]){
+        return true
+    }
+    else{
+        return false;
+    }
+
+}
 function load() {
     deck = getDeck();
     shuffle();
