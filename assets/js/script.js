@@ -55,7 +55,7 @@ function dealCards() {
         myHand[i] = deck.pop();
     }
     //display the hand on the game table
-    renderHand(myHand);
+    renderHand(myHand, true);
 
     //hide the deal button after the initial deal and display the draw button
     document.getElementById("btn-deal").style.display = "none";
@@ -84,7 +84,9 @@ function drawCards() {
     }
 
     //display new hand on the game table
-    renderHand(myHeldCards);
+    renderHand(myHeldCards, false);
+
+
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
 }
@@ -270,6 +272,31 @@ function isStraight(values) {
     return true;
     
     //to do: need code to check if straight is - A,2,3,4,5
+
+}
+
+function checkHandForWin(cards){
+    if (isRoyalFlush(cards)) {
+        alert("Royal Flush");
+    } else if (isStraightFlush(cards)) {
+        alert("Straight Flush");
+    } else if (isFourOfKind(sortCardsByValue(cards))) {
+        alert("Four of a kind");
+    } else if (isFullHouse(sortCardsByValue(cards))) {
+        alert("Full House");
+    } else if (isFlush(sortCardsByValue(cards))) {
+        alert("Flush");
+    } else if (isStraight(sortCardsByValue(cards))) {
+        alert("Straight");
+    } else if (isThreeOfKind(sortCardsByValue(cards))) {
+        alert("Three of a kind");
+    } else if (isTwoPair(sortCardsByValue(cards))) {
+        alert("Two pair");
+    } else if (isPair(sortCardsByValue(cards))) {
+        alert("A Pair");
+    } else {
+        alert("No Winning hand");
+    }
 
 }
 
