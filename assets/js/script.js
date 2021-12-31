@@ -50,12 +50,15 @@ function shuffle() {
  * and adds to players hand 
  */
 function dealCards() {
-
+    //deal 5 cards from the deck and add to hand
     for (let i = 0; i < 5; i++) {
         myHand[i] = deck.pop();
     }
+    //display the hand on the game table
     renderHand(myHand);
-    document.getElementById("btn-deal").style.display = "none";
+
+    //hide the deal button after the initial deal and display the draw button
+    document.getElementById("btn-deal").style.display = "none"; 
     document.getElementById("btn-draw").style.display = "inline-block";
 }
 
@@ -63,26 +66,35 @@ function dealCards() {
  * creates a new 5 card hand from held cards plus draw new cards from deck
  */
 function drawCards() {
-    
+    //new array to hold the cards that playerhas held
     let myHeldCards = new Array();
+    //get the cards that are dealt
     let drawnCards = document.getElementsByClassName("dealt-card");
     
+    // go through list of cards and add held cards to myHeldCards array
     for (let i = 0; i < 5; i++) {
         if (drawnCards[i].classList.contains("selected")) {
             myHeldCards.push(myHand[i])
         }
     }
 
+    // deal cards from the deck to replace cards that were not held to produce new 5 card hand
     for (let i = myHeldCards.length; i < 5; i++) {
         myHeldCards[i] = deck.pop();
     }
+
+    //display new hand on the game table
     renderHand(myHeldCards);
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
 }
 
 
-
+/**
+ * creates images for each card in array of card objects 
+ * and displays on the game table
+ * @param {*} hand 
+ */
 function renderHand(hand) {
     document.getElementById('card-table').innerHTML = '';
     for (let i = 0; i < hand.length; i++) {
