@@ -236,7 +236,7 @@ function isThreeOfKind(values) {
  * @returns {Boolean}
  */
 function isPair(values) {
-    if(values[0] === values[1]){
+    if(values[0] === values[1] || values[1] === values[2] || values[2] === values[3] || values[3] === values[4]){
         return true;
     }
     else{
