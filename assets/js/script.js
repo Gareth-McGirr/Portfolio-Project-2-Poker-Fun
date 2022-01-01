@@ -206,7 +206,8 @@ function sortCardsByValue(cards) {
  * @returns {Boolean} 
  */
 function isFourOfKind(values) {
-    if(values[0] === values[1] && values[0] === values[2] && values[0] === values[3]){
+    if((values[0] === values[1] && values[0] === values[2] && values[0] === values[3])
+        || (values[1] === values[2] && values[1] === values[3] && values[1] === values[4])){
         return true
     }
     else{
