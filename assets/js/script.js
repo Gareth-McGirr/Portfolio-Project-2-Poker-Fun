@@ -66,6 +66,10 @@ function dealCards() {
  * creates a new 5 card hand from held cards plus draw new cards from deck
  */
 function drawCards() {
+    
+    // TO DO: POSSIBLY REPLACE CARDS IN THE ARRAY RATHER THAN CREATE A NEW ARRAY ? 
+    // CARDS THAT ARE HELD WOULD THEN KEEP THE SAME POSITION ON THE GAME TABLE AFTER DRAW.   
+    
     //new array to hold the cards that playerhas held
     let myHeldCards = new Array();
     //get the cards that are dealt
@@ -216,7 +220,9 @@ function isFourOfKind(values) {
  * @returns {Boolean}
  */
 function isThreeOfKind(values) {
-    if(values[0] === values[1] && values[0] === values[2]){
+    if((values[0] === values[1] && values[0] === values[2])
+        || (values[1] === values[2] && values[1] === values[3])
+        || (values[2] === values[3] && values[2] === values[4])) {
         return true
     }
     else{
