@@ -3,6 +3,8 @@ let deck = new Array();
 //global variable array to hold the players 5 cards 
 let myHand = new Array();
 
+
+
 //event listeners
 document.getElementById("btn-deal").addEventListener("click", dealCards);
 document.getElementById("btn-draw").addEventListener("click", drawCards);
@@ -95,11 +97,7 @@ function drawCards() {
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
     checkHandForWin(myHeldCards);
-    deck = getDeck();
-    shuffle();
 }
-
-
 
 
 /**

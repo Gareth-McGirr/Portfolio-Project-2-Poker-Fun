@@ -10,7 +10,11 @@ main {
 
 .top-content {
     min-height: 50px;
+    background-color: green;
+    text-align: center;
 }
+
+
 
 #card-table {
     min-height: 250px;
