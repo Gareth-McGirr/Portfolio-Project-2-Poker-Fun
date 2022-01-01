@@ -90,9 +90,13 @@ function drawCards() {
     //display new hand on the game table
     renderHand(myHeldCards, false);
 
+    
 
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
+    checkHandForWin(myHeldCards);
+    deck = getDeck();
+    shuffle();
 }
 
 
@@ -142,9 +146,14 @@ function renderHand(hand, isDeal) {
  */
 function isFlush(cards) {
     for (let i = 0; i < (cards.length - 1); i++) {
-        if (cards[i].Suit != cards[i + 1].Suit)
-            return false;
+        console.log(cards[i].suit);
+        console.log(cards[i + 1].suit);
+        console.log("----------------")
+        if (cards[i].suit != cards[i + 1].suit){    
+        return false;
+        }
     }
+
     return true;
 }
 
@@ -294,7 +303,7 @@ function checkHandForWin(cards){
         alert("Four of a kind");
     } else if (isFullHouse(sortCardsByValue(cards))) {
         alert("Full House");
-    } else if (isFlush(sortCardsByValue(cards))) {
+    } else if (isFlush(cards)) {
         alert("Flush");
     } else if (isStraight(sortCardsByValue(cards))) {
         alert("Straight");
