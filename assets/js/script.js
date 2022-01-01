@@ -47,31 +47,53 @@ function shuffle() {
     }
 }
 
+function takeBet() {
+    let betAmount = document.getElementById("bet-amount").value;
+    console.log(betAmount);
+    let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
+    console.log(currentChipsAmount);
+    if (currentChipsAmount > betAmount) {
+        let newChipsAmount = currentChipsAmount - betAmount;
+        console.log(newChipsAmount);
+        document.getElementById("current-chips").innerText = newChipsAmount;
+        return true;
+    } else {
+        return false;
+    }
+}
+
 /** 
  * Takes 5 cards from top of deck 
  * and adds to players hand 
  */
 function dealCards() {
-    //deal 5 cards from the deck and add to hand
-    for (let i = 0; i < 5; i++) {
-        myHand[i] = deck.pop();
-    }
-    //display the hand on the game table
-    renderHand(myHand, true);
+    //take the bet amount chips from the current chips
+    if (takeBet()) {
 
-    //hide the deal button after the initial deal and display the draw button
-    document.getElementById("btn-deal").style.display = "none";
-    document.getElementById("btn-draw").style.display = "inline-block";
+        //deal 5 cards from the deck and add to hand
+        for (let i = 0; i < 5; i++) {
+            myHand[i] = deck.pop();
+        }
+        //display the hand on the game table
+        renderHand(myHand, true);
+
+        //hide the deal button after the initial deal and display the draw button
+        document.getElementById("btn-deal").style.display = "none";
+        document.getElementById("btn-draw").style.display = "inline-block";
+    } else {
+        alert("Insufficent funds for this bet !!!!")
+    }
+
 }
 
 /**
  * creates a new 5 card hand from held cards plus draw new cards from deck
  */
 function drawCards() {
-    
+
     // TO DO: POSSIBLY REPLACE CARDS IN THE ARRAY RATHER THAN CREATE A NEW ARRAY ? 
     // CARDS THAT ARE HELD WOULD THEN KEEP THE SAME POSITION ON THE GAME TABLE AFTER DRAW.   
-    
+
     //new array to hold the cards that playerhas held
     let myHeldCards = new Array();
     //get the cards that are dealt
@@ -92,7 +114,7 @@ function drawCards() {
     //display new hand on the game table
     renderHand(myHeldCards, false);
 
-    
+
 
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
@@ -133,7 +155,7 @@ function renderHand(hand, isDeal) {
         }
         document.getElementById("card-table").appendChild(card);
     }
-    
+
 }
 
 /**
@@ -147,8 +169,8 @@ function isFlush(cards) {
         console.log(cards[i].suit);
         console.log(cards[i + 1].suit);
         console.log("----------------")
-        if (cards[i].suit != cards[i + 1].suit){    
-        return false;
+        if (cards[i].suit != cards[i + 1].suit) {
+            return false;
         }
     }
 
@@ -156,19 +178,17 @@ function isFlush(cards) {
 }
 
 function isRoyalFlush(cards) {
-    if(isStraightFlush(cards) && cards[0].value === "10"){
+    if (isStraightFlush(cards) && cards[0].value === "10") {
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 }
 
 function isStraightFlush(cards) {
-    if(isFlush(cards) && isStraight(sortCardsByValue(cards))){
+    if (isFlush(cards) && isStraight(sortCardsByValue(cards))) {
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 
@@ -198,10 +218,12 @@ function sortCardsByValue(cards) {
                 break;
             default:
                 values.push(parseInt(cards[i].value));
-        }   
+        }
     }
     console.log(values);
-    values.sort(function(a, b){return a-b});
+    values.sort(function (a, b) {
+        return a - b
+    });
     console.log(values);
     console.log("----------------------------");
     return values;
@@ -213,11 +235,10 @@ function sortCardsByValue(cards) {
  * @returns {Boolean} 
  */
 function isFourOfKind(values) {
-    if((values[0] === values[1] && values[0] === values[2] && values[0] === values[3])
-        || (values[1] === values[2] && values[1] === values[3] && values[1] === values[4])){
+    if ((values[0] === values[1] && values[0] === values[2] && values[0] === values[3]) ||
+        (values[1] === values[2] && values[1] === values[3] && values[1] === values[4])) {
         return true
-    }
-    else{
+    } else {
         return false;
     }
 }
@@ -228,12 +249,11 @@ function isFourOfKind(values) {
  * @returns {Boolean}
  */
 function isThreeOfKind(values) {
-    if((values[0] === values[1] && values[0] === values[2])
-        || (values[1] === values[2] && values[1] === values[3])
-        || (values[2] === values[3] && values[2] === values[4])) {
+    if ((values[0] === values[1] && values[0] === values[2]) ||
+        (values[1] === values[2] && values[1] === values[3]) ||
+        (values[2] === values[3] && values[2] === values[4])) {
         return true
-    }
-    else{
+    } else {
         return false;
     }
 }
@@ -244,23 +264,21 @@ function isThreeOfKind(values) {
  * @returns {Boolean}
  */
 function isPair(values) {
-    if(values[0] === values[1] || values[1] === values[2] || values[2] === values[3] || values[3] === values[4]){
+    if (values[0] === values[1] || values[1] === values[2] || values[2] === values[3] || values[3] === values[4]) {
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 }
 
-function isFullHouse(values){
+function isFullHouse(values) {
     let valuesReversed = values.slice().reverse();
-    if(((values[0] === values[1]) && (values[2] === values[3] && values[2] == values[4]))
-        || ((values[3] === values[4]) && (values[0] === values[1] && values[0] == values[2]))){
+    if (((values[0] === values[1]) && (values[2] === values[3] && values[2] == values[4])) ||
+        ((values[3] === values[4]) && (values[0] === values[1] && values[0] == values[2]))) {
         return true;
-    }
-    else{
+    } else {
         return false;
-    }    
+    }
 }
 
 /**
@@ -269,30 +287,32 @@ function isFullHouse(values){
  * @returns {Boolean}
  */
 function isTwoPair(values) {
-    if((values[0] === values[1] && values[2] === values[3])
-        || (values[1] === values[2] && values[3] === values[4])
-        || (values[0] === values[1] && values[3] === values[4])){
+    if ((values[0] === values[1] && values[2] === values[3]) ||
+        (values[1] === values[2] && values[3] === values[4]) ||
+        (values[0] === values[1] && values[3] === values[4])) {
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 }
 
 function isStraight(values) {
-
-    for(let i = 0; i < values.length-1; i++){
-        if(values[i] != values[i+1]+1){
+    console.log("checking for straight");
+    console.log(values);
+    for (let i = 0; i < values.length - 1; i++) {
+        if (values[i+1] != (values[i] + 1)) {
+            console.log("value " + i + " is " + values[i]);
+            console.log("value " + i + " is " + values[i+1])
             return false;
         }
     }
     return true;
-    
+
     //to do: need code to check if straight is - A,2,3,4,5
 
 }
 
-function checkHandForWin(cards){
+function checkHandForWin(cards) {
     if (isRoyalFlush(cards)) {
         alert("Royal Flush");
     } else if (isStraightFlush(cards)) {
@@ -319,7 +339,7 @@ function checkHandForWin(cards){
 
 function load() {
     deck = getDeck();
-    shuffle();
+    //shuffle();
 }
 
 window.onload = load;
