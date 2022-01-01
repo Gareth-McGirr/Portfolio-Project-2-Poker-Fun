@@ -67,6 +67,7 @@ function takeBet() {
  * and adds to players hand 
  */
 function dealCards() {
+    
     //take the bet amount chips from the current chips
     if (takeBet()) {
 
@@ -114,11 +115,11 @@ function drawCards() {
     //display new hand on the game table
     renderHand(myHeldCards, false);
 
-
+    checkHandForWin(myHeldCards);
 
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
-    checkHandForWin(myHeldCards);
+    
 }
 
 
@@ -314,26 +315,45 @@ function isStraight(values) {
 
 function checkHandForWin(cards) {
     if (isRoyalFlush(cards)) {
-        alert("Royal Flush");
+        alert("Royal Flush"); //call function and pass multiple of bet to calc win for the hand
     } else if (isStraightFlush(cards)) {
         alert("Straight Flush");
+        gambleWinnings(0);
     } else if (isFourOfKind(sortCardsByValue(cards))) {
         alert("Four of a kind");
+        gambleWinnings(0);
     } else if (isFullHouse(sortCardsByValue(cards))) {
         alert("Full House");
+        gambleWinnings(0);
     } else if (isFlush(cards)) {
         alert("Flush");
+        gambleWinnings(0);
     } else if (isStraight(sortCardsByValue(cards))) {
         alert("Straight");
+        gambleWinnings(0);
     } else if (isThreeOfKind(sortCardsByValue(cards))) {
         alert("Three of a kind");
+        gambleWinnings(0);
     } else if (isTwoPair(sortCardsByValue(cards))) {
         alert("Two pair");
+        gambleWinnings(0);
     } else if (isPair(sortCardsByValue(cards))) {
         alert("A Pair");
+        gambleWinnings(0);
     } else {
         alert("No Winning hand");
     }
+
+}
+
+function gambleWinnings(winMultiplyer) {
+    deck = getDeck();
+    document.getElementById('card-table').innerHTML = '';
+    document.getElementById("btn-deal").style.display = "none";
+    document.getElementById("btn-bank-win").style.display = "inline-block";
+    document.getElementById("winnings").style.display = "inline-block";
+    document.getElementById("btn-high").style.display = "inline-block";
+    document.getElementById("btn-low").style.display = "inline-block";
 
 }
 

@@ -101,6 +101,22 @@ button {
     display: none;
 }
 
+#btn-bank-win {
+    display: none;
+}
+
+#btn-high {
+    display: none;
+}
+
+#btn-low {
+    display: none;
+}
+
+#winnings {
+    display: none;
+}
+
 
 #bet-amount {
     width: 50px;
