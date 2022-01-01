@@ -247,7 +247,8 @@ function isPair(values) {
 
 function isFullHouse(values){
     let valuesReversed = values.slice().reverse();
-    if((isPair(values) && isThreeOfKind(valuesReversed)) || (isPair(valuesReversed) && isThreeOfKind(values))){
+    if(((values[0] === values[1]) && (values[2] === values[3] && values[2] == values[4]))
+        || ((values[3] === values[4]) && (values[0] === values[1] && values[0] == values[2]))){
         return true;
     }
     else{
@@ -261,7 +262,9 @@ function isFullHouse(values){
  * @returns {Boolean}
  */
 function isTwoPair(values) {
-    if(values[0] === values[1] && values[2] === values[3]){
+    if((values[0] === values[1] && values[2] === values[3])
+        || (values[1] === values[2] && values[3] === values[4])
+        || (values[0] === values[1] && values[3] === values[4])){
         return true;
     }
     else{
