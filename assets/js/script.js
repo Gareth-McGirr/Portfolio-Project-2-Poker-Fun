@@ -218,12 +218,7 @@ function isStraightFlush(cards) {
 
 }
 
-/**
- * 
- * @param {Array} cards 
- * @returns {Array} values
- */
-function sortCardsByValue(cards) {
+function convertCardsToValues(cards) {
     let values = new Array();
     for (i = 0; i < cards.length; i++) {
         switch (cards[i].value) {
@@ -243,6 +238,16 @@ function sortCardsByValue(cards) {
                 values.push(parseInt(cards[i].value));
         }
     }
+    return values;
+}
+
+/**
+ * 
+ * @param {Array} cards 
+ * @returns {Array} values
+ */
+function sortCardsByValue(cards) {
+    let values = convertCardsToValues(cards)
     console.log(values);
     values.sort(function (a, b) {
         return a - b
@@ -398,26 +403,8 @@ function gambleWinnings(winMultiplyer) {
 function highLowOrBank() {
     //set initial index
     let index = 0;
-
-    let values = new Array();
-    for (i = 0; i < myHand.length; i++) {
-        switch (myHand[i].value) {
-            case 'A':
-                values.push(14);
-                break;
-            case 'K':
-                values.push(13);
-                break;
-            case 'Q':
-                values.push(12);
-                break;
-            case 'J':
-                values.push(11);
-                break;
-            default:
-                values.push(parseInt(myHand[i].value));
-        }
-    }
+    let values = convertCardsToValues(myHand);
+    
 
     document.getElementById('btn-high').addEventListener('click', function () {
         console.log(' high clicked');
