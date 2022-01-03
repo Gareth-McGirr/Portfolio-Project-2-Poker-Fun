@@ -67,7 +67,7 @@ function takeBet() {
  * and adds to players hand 
  */
 function dealCards() {
-    
+
     //take the bet amount chips from the current chips
     if (takeBet()) {
 
@@ -119,7 +119,7 @@ function drawCards() {
 
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
-    
+
 }
 
 
@@ -156,6 +156,28 @@ function renderHand(hand, isDeal) {
         }
         document.getElementById("card-table").appendChild(card);
     }
+
+}
+
+function renderCard(aCard) {
+    let card = document.createElement("div");
+    let value = document.createElement("div");
+    let suit = document.createElement("div");
+    let hold = document.createElement("div");
+    card.className = "card dealt-card";
+    value.className = "value";
+    suit.className = "suit " + aCard.suit;
+
+
+    value.innerHTML = aCard.value;
+
+    card.appendChild(value);
+    card.appendChild(suit);
+    card.appendChild(hold);
+
+
+
+    document.getElementById("card-table").appendChild(card);
 
 }
 
@@ -301,9 +323,9 @@ function isStraight(values) {
     console.log("checking for straight");
     console.log(values);
     for (let i = 0; i < values.length - 1; i++) {
-        if (values[i+1] != (values[i] + 1)) {
+        if (values[i + 1] != (values[i] + 1)) {
             console.log("value " + i + " is " + values[i]);
-            console.log("value " + i + " is " + values[i+1])
+            console.log("value " + i + " is " + values[i + 1])
             return false;
         }
     }
@@ -315,31 +337,33 @@ function isStraight(values) {
 
 function checkHandForWin(cards) {
     if (isRoyalFlush(cards)) {
-        alert("Royal Flush"); //call function and pass multiple of bet to calc win for the hand
+        alert("Royal Flush");
+        //call function and pass multiple of bet to calc win for the hand
+        gambleWinnings(500);
     } else if (isStraightFlush(cards)) {
         alert("Straight Flush");
-        gambleWinnings(0);
+        gambleWinnings(60);
     } else if (isFourOfKind(sortCardsByValue(cards))) {
         alert("Four of a kind");
-        gambleWinnings(0);
+        gambleWinnings(25);
     } else if (isFullHouse(sortCardsByValue(cards))) {
         alert("Full House");
-        gambleWinnings(0);
+        gambleWinnings(10);
     } else if (isFlush(cards)) {
         alert("Flush");
-        gambleWinnings(0);
+        gambleWinnings(5);
     } else if (isStraight(sortCardsByValue(cards))) {
         alert("Straight");
-        gambleWinnings(0);
+        gambleWinnings(4);
     } else if (isThreeOfKind(sortCardsByValue(cards))) {
         alert("Three of a kind");
-        gambleWinnings(0);
+        gambleWinnings(3);
     } else if (isTwoPair(sortCardsByValue(cards))) {
         alert("Two pair");
-        gambleWinnings(0);
+        gambleWinnings(2);
     } else if (isPair(sortCardsByValue(cards))) {
         alert("A Pair");
-        gambleWinnings(0);
+        gambleWinnings(1);
     } else {
         alert("No Winning hand");
     }
@@ -347,13 +371,107 @@ function checkHandForWin(cards) {
 }
 
 function gambleWinnings(winMultiplyer) {
-    deck = getDeck();
+    //deck = getDeck();
     document.getElementById('card-table').innerHTML = '';
     document.getElementById("btn-deal").style.display = "none";
     document.getElementById("btn-bank-win").style.display = "inline-block";
     document.getElementById("winnings").style.display = "inline-block";
     document.getElementById("btn-high").style.display = "inline-block";
     document.getElementById("btn-low").style.display = "inline-block";
+
+    // calculate winnings
+    let betAmount = document.getElementById("bet-amount").value;
+    let winnings = betAmount * winMultiplyer;
+    document.getElementById("winnings-amount").innerText = winnings;
+
+    //get new 5 cards for high/low game
+    for (let i = 0; i < 5; i++) {
+        myHand[i] = deck.pop();
+    }
+
+    //display first card
+    renderCard(myHand[0]);
+    highLowOrBank();
+
+}
+
+function highLowOrBank() {
+    //set initial index
+    let index = 0;
+
+    let values = new Array();
+    for (i = 0; i < myHand.length; i++) {
+        switch (myHand[i].value) {
+            case 'A':
+                values.push(14);
+                break;
+            case 'K':
+                values.push(13);
+                break;
+            case 'Q':
+                values.push(12);
+                break;
+            case 'J':
+                values.push(11);
+                break;
+            default:
+                values.push(parseInt(myHand[i].value));
+        }
+    }
+
+    document.getElementById('btn-high').addEventListener('click', function () {
+        console.log(' high clicked');
+        index++;
+        renderCard(myHand[index]);
+        if (values[index] > values[index - 1]) {
+            console.log("Win-Card is higher")
+            let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
+
+            //double the current winnings
+            currentWinnings *= 2;
+            //display new winnings
+            document.getElementById("winnings-amount").innerText = currentWinnings;
+        } else {
+            console.log("Lose-Card is lower");
+            document.getElementById("winnings-amount").innerText = "0";
+        }
+
+    });
+    document.getElementById('btn-low').addEventListener('click', function () {
+        console.log('low clicked');
+        index++;
+        renderCard(myHand[index]);
+        if (values[index] < values[index - 1]) {
+            console.log("Win-Card is lower")
+            let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
+
+            //double the current winnings
+            currentWinnings *= 2;
+            //display new winnings
+            document.getElementById("winnings-amount").innerText = currentWinnings;
+        } else {
+            console.log("Lose-Card is higher");
+            document.getElementById("winnings-amount").innerText = "0";
+        }
+    });
+    document.getElementById('btn-bank-win').addEventListener('click', function () {
+        console.log('Bank Win clicked');
+        let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
+        let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
+        let newChipsAmount = currentChipsAmount + currentWinnings;
+        document.getElementById("current-chips").innerText = newChipsAmount;
+
+        //hide the gamble winnings buttons
+        document.getElementById("btn-bank-win").style.display = "none";
+        document.getElementById("winnings").style.display = "none";
+        document.getElementById("btn-high").style.display = "none";
+        document.getElementById("btn-low").style.display = "none";
+
+        //clear the game table for next deal
+        document.getElementById('card-table').innerHTML = '';
+    });
+
+
 
 }
 
