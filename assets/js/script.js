@@ -3,11 +3,18 @@ let deck = new Array();
 //global variable array to hold the players 5 cards 
 let myHand = new Array();
 
+let indexCounter = 0;
+let hiLoValues = new Array;
+
 
 
 //event listeners
 document.getElementById("btn-deal").addEventListener("click", dealCards);
 document.getElementById("btn-draw").addEventListener("click", drawCards);
+document.getElementById('btn-bank-win').addEventListener('click', bankWinnings);
+document.getElementById('btn-high').addEventListener('click', checkHighWin);
+document.getElementById('btn-low').addEventListener('click', checkLoWin);
+
 
 /**
  * creates a deck of 52 card objects using values and suits
@@ -300,7 +307,7 @@ function isPair(values) {
 }
 
 function isFullHouse(values) {
-    let valuesReversed = values.slice().reverse();
+    //let valuesReversed = values.slice().reverse();
     if (((values[0] === values[1]) && (values[2] === values[3] && values[2] == values[4])) ||
         ((values[3] === values[4]) && (values[0] === values[1] && values[0] == values[2]))) {
         return true;
@@ -376,7 +383,7 @@ function checkHandForWin(cards) {
 }
 
 function gambleWinnings(winMultiplyer) {
-    //deck = getDeck();
+
     document.getElementById('card-table').innerHTML = '';
     document.getElementById("btn-deal").style.display = "none";
     document.getElementById("btn-bank-win").style.display = "inline-block";
@@ -394,72 +401,68 @@ function gambleWinnings(winMultiplyer) {
         myHand[i] = deck.pop();
     }
 
-    //display first card
-    renderCard(myHand[0]);
-    highLowOrBank();
+    // get array of values from myHand
+    hiLoValues = convertCardsToValues(myHand);
+    //reset counter for cards
+    indexCounter = 0;
+    //display first card for high low game
+    renderCard(myHand[indexCounter]);
+    
 
 }
 
-function highLowOrBank() {
-    //set initial index
-    let index = 0;
-    let values = convertCardsToValues(myHand);
-    
 
-    document.getElementById('btn-high').addEventListener('click', function () {
-        console.log(' high clicked');
-        index++;
-        renderCard(myHand[index]);
-        if (values[index] > values[index - 1]) {
-            console.log("Win-Card is higher")
-            let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
-
-            //double the current winnings
-            currentWinnings *= 2;
-            //display new winnings
-            document.getElementById("winnings-amount").innerText = currentWinnings;
-        } else {
-            console.log("Lose-Card is lower");
-            document.getElementById("winnings-amount").innerText = "0";
-        }
-
-    });
-    document.getElementById('btn-low').addEventListener('click', function () {
-        console.log('low clicked');
-        index++;
-        renderCard(myHand[index]);
-        if (values[index] < values[index - 1]) {
-            console.log("Win-Card is lower")
-            let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
-
-            //double the current winnings
-            currentWinnings *= 2;
-            //display new winnings
-            document.getElementById("winnings-amount").innerText = currentWinnings;
-        } else {
-            console.log("Lose-Card is higher");
-            document.getElementById("winnings-amount").innerText = "0";
-        }
-    });
-    document.getElementById('btn-bank-win').addEventListener('click', function () {
-        console.log('Bank Win clicked');
+function checkHighWin() {
+    console.log(' high clicked');
+    indexCounter++;
+    renderCard(myHand[indexCounter]);
+    if (hiLoValues[indexCounter] > hiLoValues[indexCounter - 1]) {
+        console.log("Win-Card is higher")
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
-        let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
-        let newChipsAmount = currentChipsAmount + currentWinnings;
-        document.getElementById("current-chips").innerText = newChipsAmount;
 
-        //hide the gamble winnings buttons
-        document.getElementById("btn-bank-win").style.display = "none";
-        document.getElementById("winnings").style.display = "none";
-        document.getElementById("btn-high").style.display = "none";
-        document.getElementById("btn-low").style.display = "none";
+        //double the current winnings
+        currentWinnings *= 2;
+        //display new winnings
+        document.getElementById("winnings-amount").innerText = currentWinnings;
+    } else {
+        console.log("Lose-Card is lower");
+        document.getElementById("winnings-amount").innerText = "0";
+    }
+}
 
-        //clear the game table for next deal
-        document.getElementById('card-table').innerHTML = '';
-    });
+function checkLoWin() {
+    console.log(' Low clicked');
+    indexCounter++;
+    renderCard(myHand[indexCounter]);
+    if (hiLoValues[indexCounter] < hiLoValues[indexCounter - 1]) {
+        console.log("Win-Card is lower")
+        let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
 
+        //double the current winnings
+        currentWinnings *= 2;
+        //display new winnings
+        document.getElementById("winnings-amount").innerText = currentWinnings;
+    } else {
+        console.log("Lose-Card is higher");
+        document.getElementById("winnings-amount").innerText = "0";
+    }
+}
 
+function bankWinnings() {
+    console.log('Bank Win clicked');
+    let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
+    let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
+    let newChipsAmount = currentChipsAmount + currentWinnings;
+    document.getElementById("current-chips").innerText = newChipsAmount;
 
+    //hide the gamble winnings buttons
+    document.getElementById("btn-bank-win").style.display = "none";
+    document.getElementById("winnings").style.display = "none";
+    document.getElementById("btn-high").style.display = "none";
+    document.getElementById("btn-low").style.display = "none";
+
+    //clear the game table for next deal
+    document.getElementById('card-table').innerHTML = '';
 }
 
 function load() {
