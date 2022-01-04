@@ -123,7 +123,7 @@ function drawCards() {
     renderHand(myHeldCards, false);
 
     checkHandForWin(myHeldCards);
-    setTimeout(checkHandForWin(myHeldCards), 5000);
+    //setTimeout(checkHandForWin(myHeldCards), 5000);
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
 
@@ -350,32 +350,33 @@ function isStraight(values) {
 function checkHandForWin(cards) {
     if (isRoyalFlush(cards)) {
        displayWinningHandMessage("Royal Flush");
-        //call function and pass multiple of bet to calc win for the hand
-        gambleWinnings(500);
+        //call function with delay and pass multiple of bet to calc win for the hand
+        setTimeout(gambleWinnings, 5000, 500);
     } else if (isStraightFlush(cards)) {
         displayWinningHandMessage("Straight Flush");
-        gambleWinnings(60);
+        setTimeout(gambleWinnings, 5000, 60);
+        //gambleWinnings(60);
     } else if (isFourOfKind(sortCardsByValue(cards))) {
         displayWinningHandMessage("Four of a kind");
-        gambleWinnings(25);
+        setTimeout(gambleWinnings, 5000, 25);
     } else if (isFullHouse(sortCardsByValue(cards))) {
         displayWinningHandMessage("Full House");
-        gambleWinnings(10);
+        setTimeout(gambleWinnings, 5000, 10);
     } else if (isFlush(cards)) {
         displayWinningHandMessage("Flush");
-        gambleWinnings(5);
+        setTimeout(gambleWinnings, 5000, 5);
     } else if (isStraight(sortCardsByValue(cards))) {
         displayWinningHandMessage("Straight");
-        gambleWinnings(4);
+        setTimeout(gambleWinnings, 5000, 4);
     } else if (isThreeOfKind(sortCardsByValue(cards))) {
         displayWinningHandMessage("Three of a kind");
-        gambleWinnings(3);
+        setTimeout(gambleWinnings, 5000, 3);
     } else if (isTwoPair(sortCardsByValue(cards))) {
         displayWinningHandMessage("Two pair");
-        gambleWinnings(2);
+        setTimeout(gambleWinnings, 5000, 2);
     } else if (isPair(sortCardsByValue(cards))) {
         displayWinningHandMessaget("A Pair");
-        gambleWinnings(1);
+        setTimeout(gambleWinnings, 5000, 1);
     } else {
         displayWinningHandMessage("No Winning hand");
     }
@@ -383,7 +384,7 @@ function checkHandForWin(cards) {
 }
 
 function displayWinningHandMessage(message) {
-    document.getElementById("winnings-amount").innerText = message;
+    document.getElementById("game-display-message").innerText = message;
 }
 
 function gambleWinnings(winMultiplyer) {
