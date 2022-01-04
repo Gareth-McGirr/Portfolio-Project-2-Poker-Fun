@@ -77,7 +77,7 @@ function dealCards() {
 
     //take the bet amount chips from the current chips
     if (takeBet()) {
-
+        //shuffle();
         //deal 5 cards from the deck and add to hand
         for (let i = 0; i < 5; i++) {
             myHand[i] = deck.pop();
@@ -123,7 +123,7 @@ function drawCards() {
     renderHand(myHeldCards, false);
 
     checkHandForWin(myHeldCards);
-
+    setTimeout(checkHandForWin(myHeldCards), 5000);
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
 
@@ -349,37 +349,41 @@ function isStraight(values) {
 
 function checkHandForWin(cards) {
     if (isRoyalFlush(cards)) {
-        alert("Royal Flush");
+       displayWinningHandMessage("Royal Flush");
         //call function and pass multiple of bet to calc win for the hand
         gambleWinnings(500);
     } else if (isStraightFlush(cards)) {
-        alert("Straight Flush");
+        displayWinningHandMessage("Straight Flush");
         gambleWinnings(60);
     } else if (isFourOfKind(sortCardsByValue(cards))) {
-        alert("Four of a kind");
+        displayWinningHandMessage("Four of a kind");
         gambleWinnings(25);
     } else if (isFullHouse(sortCardsByValue(cards))) {
-        alert("Full House");
+        displayWinningHandMessage("Full House");
         gambleWinnings(10);
     } else if (isFlush(cards)) {
-        alert("Flush");
+        displayWinningHandMessage("Flush");
         gambleWinnings(5);
     } else if (isStraight(sortCardsByValue(cards))) {
-        alert("Straight");
+        displayWinningHandMessage("Straight");
         gambleWinnings(4);
     } else if (isThreeOfKind(sortCardsByValue(cards))) {
-        alert("Three of a kind");
+        displayWinningHandMessage("Three of a kind");
         gambleWinnings(3);
     } else if (isTwoPair(sortCardsByValue(cards))) {
-        alert("Two pair");
+        displayWinningHandMessage("Two pair");
         gambleWinnings(2);
     } else if (isPair(sortCardsByValue(cards))) {
-        alert("A Pair");
+        displayWinningHandMessaget("A Pair");
         gambleWinnings(1);
     } else {
-        alert("No Winning hand");
+        displayWinningHandMessage("No Winning hand");
     }
 
+}
+
+function displayWinningHandMessage(message) {
+    document.getElementById("winnings-amount").innerText = message;
 }
 
 function gambleWinnings(winMultiplyer) {

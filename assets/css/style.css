@@ -27,6 +27,16 @@ main {
     justify-content: center;
 }
 
+#game-display-message {
+    min-height: 30px;
+    background-color: green;
+    border-style: solid;
+    border-width: medium;
+    text-align: center;
+    padding: 0;
+    
+}
+
 .card {
     padding: 10px;
     border: solid 1px #808080;
