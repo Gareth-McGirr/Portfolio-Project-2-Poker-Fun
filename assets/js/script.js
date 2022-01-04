@@ -349,7 +349,7 @@ function isStraight(values) {
 
 function checkHandForWin(cards) {
     if (isRoyalFlush(cards)) {
-       displayWinningHandMessage("Royal Flush");
+        displayWinningHandMessage("Royal Flush");
         //call function with delay and pass multiple of bet to calc win for the hand
         setTimeout(gambleWinnings, 5000, 500);
     } else if (isStraightFlush(cards)) {
@@ -432,6 +432,7 @@ function checkHighWin() {
     } else {
         console.log("Lose-Card is lower");
         document.getElementById("winnings-amount").innerText = "0";
+
     }
 }
 
@@ -465,6 +466,7 @@ function bankWinnings() {
     document.getElementById("winnings").style.display = "none";
     document.getElementById("btn-high").style.display = "none";
     document.getElementById("btn-low").style.display = "none";
+    document.getElementById("btn-deal").style.display = "inline-block";
 
     //clear the game table for next deal
     document.getElementById('card-table').innerHTML = '';
