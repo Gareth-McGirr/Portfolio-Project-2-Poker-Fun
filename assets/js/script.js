@@ -48,7 +48,7 @@ function shuffle() {
     for (let i = 0; i < 1000; i++) {
         let location1 = Math.floor((Math.random() * deck.length));
         let location2 = Math.floor((Math.random() * deck.length));
-        
+
         //swap cards using a temp variable
         let tmp = deck[location1];
         deck[location1] = deck[location2];
@@ -59,7 +59,7 @@ function shuffle() {
     //clear the game table for next deal
     document.getElementById('card-table').innerHTML = '';
     displayMessage("Place Bet and Click Deal");
-    
+
 }
 
 function takeBet() {
@@ -141,7 +141,7 @@ function drawCards() {
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
 
-    
+
 }
 
 
@@ -314,8 +314,8 @@ function isThreeOfKind(values) {
  * @returns {Boolean}
  */
 function isPair(values) {
-    if ((values[0] === values[1] && values[0] > 10 )|| (values[1] === values[2] && values[1] > 10) 
-    || (values[2] === values[3] && values[2] > 10) || (values[3] === values[4] && values[3] > 10)) {
+    if ((values[0] === values[1] && values[0] > 10) || (values[1] === values[2] && values[1] > 10) ||
+        (values[2] === values[3] && values[2] > 10) || (values[3] === values[4] && values[3] > 10)) {
         return true;
     } else {
         return false;
@@ -458,19 +458,23 @@ function checkHighWin() {
         document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-        
+
 
         //clear the game table for next deal
         //document.getElementById('card-table').innerHTML = '';
 
     }
-    
-    if(indexCounter === 4) {
+
+    if (indexCounter === 4) {
         document.getElementById("btn-bank-win").style.display = "none";
         //document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
         displayMessage("Max Gambles Reached !!!")
+        let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
+        let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
+        let newChipsAmount = currentChipsAmount + currentWinnings;
+        document.getElementById("current-chips").innerText = newChipsAmount;
         setTimeout(shuffle, 5000);
     }
 }
@@ -496,20 +500,24 @@ function checkLoWin() {
         document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-        
+
 
         //clear the game table for next deal
         //document.getElementById('card-table').innerHTML = '';
     }
-    if(indexCounter === 4) {
+    if (indexCounter === 4) {
         document.getElementById("btn-bank-win").style.display = "none";
         //document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
         displayMessage("Max Gambles Reached !!!")
+        let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
+        let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
+        let newChipsAmount = currentChipsAmount + currentWinnings;
+        document.getElementById("current-chips").innerText = newChipsAmount;
         setTimeout(shuffle, 5000);
     }
-    
+
 }
 
 function bankWinnings() {
