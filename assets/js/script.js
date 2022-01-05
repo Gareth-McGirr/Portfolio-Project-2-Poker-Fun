@@ -44,7 +44,7 @@ function getDeck() {
  * Shuffle the deck by switching two random cards for 1000 turns
  */
 function shuffle() {
-
+    deck = getDeck();
     for (let i = 0; i < 1000; i++) {
         let location1 = Math.floor((Math.random() * deck.length));
         let location2 = Math.floor((Math.random() * deck.length));
@@ -56,9 +56,10 @@ function shuffle() {
     }
     document.getElementById("winnings").style.display = "none";
     document.getElementById("btn-deal").style.display = "inline-block";
-
+    //clear the game table for next deal
+    document.getElementById('card-table').innerHTML = '';
     displayMessage("Place Bet and Click Deal");
-
+    
 }
 
 function takeBet() {
@@ -457,8 +458,7 @@ function checkHighWin() {
         document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-        //display deal button again
-        document.getElementById("btn-deal").style.display = "inline-block";
+        
 
         //clear the game table for next deal
         //document.getElementById('card-table').innerHTML = '';
@@ -496,8 +496,7 @@ function checkLoWin() {
         document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-        //display deal button again
-        document.getElementById("btn-deal").style.display = "inline-block";
+        
 
         //clear the game table for next deal
         //document.getElementById('card-table').innerHTML = '';
