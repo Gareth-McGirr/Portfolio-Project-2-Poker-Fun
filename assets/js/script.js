@@ -54,6 +54,8 @@ function shuffle() {
         deck[location1] = deck[location2];
         deck[location2] = tmp;
     }
+
+    displayMessage("Place Bet and Click Deal");
 }
 
 function takeBet() {
@@ -99,6 +101,7 @@ function dealCards() {
         alert("Insufficent funds for this bet !!!!")
     }
 
+    displayMessage("Click Cards to Hold---------Click Draw to get new cards.")
 }
 
 /**
@@ -357,41 +360,42 @@ function isStraight(values) {
 
 function checkHandForWin(cards) {
     if (isRoyalFlush(cards)) {
-        displayWinningHandMessage("Royal Flush");
+        displayMessage("Royal Flush");
         //call function with delay and pass multiple of bet to calc win for the hand
-        setTimeout(gambleWinnings, 5000, 500);
+        setTimeout(gambleWinnings, 3000, 500);
     } else if (isStraightFlush(cards)) {
-        displayWinningHandMessage("Straight Flush");
-        setTimeout(gambleWinnings, 5000, 60);
+        displayMessage("Straight Flush");
+        setTimeout(gambleWinnings, 3000, 60);
         //gambleWinnings(60);
     } else if (isFourOfKind(sortCardsByValue(cards))) {
-        displayWinningHandMessage("Four of a kind");
-        setTimeout(gambleWinnings, 5000, 25);
+        displayMessage("Four of a kind");
+        setTimeout(gambleWinnings, 3000, 25);
     } else if (isFullHouse(sortCardsByValue(cards))) {
-        displayWinningHandMessage("Full House");
-        setTimeout(gambleWinnings, 5000, 10);
+        displayMessage("Full House");
+        setTimeout(gambleWinnings, 3000, 10);
     } else if (isFlush(cards)) {
-        displayWinningHandMessage("Flush");
-        setTimeout(gambleWinnings, 5000, 5);
+        displayMessage("Flush");
+        setTimeout(gambleWinnings, 3000, 5);
     } else if (isStraight(sortCardsByValue(cards))) {
-        displayWinningHandMessage("Straight");
-        setTimeout(gambleWinnings, 5000, 4);
+        displayMessage("Straight");
+        setTimeout(gambleWinnings, 3000, 4);
     } else if (isThreeOfKind(sortCardsByValue(cards))) {
-        displayWinningHandMessage("Three of a kind");
-        setTimeout(gambleWinnings, 5000, 3);
+        displayMessage("Three of a kind");
+        setTimeout(gambleWinnings, 3000, 3);
     } else if (isTwoPair(sortCardsByValue(cards))) {
-        displayWinningHandMessage("Two pair");
-        setTimeout(gambleWinnings, 5000, 2);
+        displayMessage("Two pair");
+        setTimeout(gambleWinnings, 3000, 2);
     } else if (isPair(sortCardsByValue(cards))) {
-        displayWinningHandMessaget("A Pair");
-        setTimeout(gambleWinnings, 5000, 1);
+        displayMessaget("A Pair");
+        setTimeout(gambleWinnings, 3000, 1);
     } else {
-        displayWinningHandMessage("No Winning hand");
+        displayMessage("No Winning hand");
+        setTimeout(shuffle, 3000);
     }
 
 }
 
-function displayWinningHandMessage(message) {
+function displayMessage(message) {
     document.getElementById("game-display-message").innerText = message;
 }
 
@@ -422,6 +426,8 @@ function gambleWinnings(winMultiplyer) {
     //display first card for high low game
     renderCard(myHand[indexCounter]);
 
+    displayMessage("Bank your winnings or Gamble High/Low to double winnings    -    Max of 5 cards!")
+
 
 }
 
@@ -439,9 +445,9 @@ function checkHighWin() {
         //display new winnings
         document.getElementById("winnings-amount").innerText = currentWinnings;
     } else {
-        console.log("Lose-Card is lower");
+        displayMessage("Lose-Card is lower");
         document.getElementById("winnings-amount").innerText = "0";
-
+        setTimeout(shuffle, 5000);
         //hide the gamble winnings buttons
         document.getElementById("btn-bank-win").style.display = "none";
         document.getElementById("winnings").style.display = "none";
@@ -451,7 +457,7 @@ function checkHighWin() {
         document.getElementById("btn-deal").style.display = "inline-block";
 
         //clear the game table for next deal
-        document.getElementById('card-table').innerHTML = '';
+        //document.getElementById('card-table').innerHTML = '';
 
     }
 }
@@ -469,9 +475,9 @@ function checkLoWin() {
         //display new winnings
         document.getElementById("winnings-amount").innerText = currentWinnings;
     } else {
-        console.log("Lose-Card is higher");
+        displayMessage("Lose-Card is higher");
         document.getElementById("winnings-amount").innerText = "0";
-
+        setTimeout(shuffle, 5000);
         //hide the gamble winnings buttons
         document.getElementById("btn-bank-win").style.display = "none";
         document.getElementById("winnings").style.display = "none";
@@ -481,7 +487,7 @@ function checkLoWin() {
         document.getElementById("btn-deal").style.display = "inline-block";
 
         //clear the game table for next deal
-        document.getElementById('card-table').innerHTML = '';
+        //document.getElementById('card-table').innerHTML = '';
     }
 }
 
@@ -502,6 +508,7 @@ function bankWinnings() {
 
     //clear the game table for next deal
     document.getElementById('card-table').innerHTML = '';
+    shuffle();
 }
 
 function load() {
