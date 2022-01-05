@@ -54,8 +54,11 @@ function shuffle() {
         deck[location1] = deck[location2];
         deck[location2] = tmp;
     }
+    document.getElementById("winnings").style.display = "none";
+    document.getElementById("btn-deal").style.display = "inline-block";
 
     displayMessage("Place Bet and Click Deal");
+
 }
 
 function takeBet() {
@@ -460,6 +463,15 @@ function checkHighWin() {
         //document.getElementById('card-table').innerHTML = '';
 
     }
+    
+    if(indexCounter === 4) {
+        document.getElementById("btn-bank-win").style.display = "none";
+        //document.getElementById("winnings").style.display = "none";
+        document.getElementById("btn-high").style.display = "none";
+        document.getElementById("btn-low").style.display = "none";
+        displayMessage("Max Gambles Reached !!!")
+        setTimeout(shuffle, 5000);
+    }
 }
 
 function checkLoWin() {
@@ -489,6 +501,15 @@ function checkLoWin() {
         //clear the game table for next deal
         //document.getElementById('card-table').innerHTML = '';
     }
+    if(indexCounter === 4) {
+        document.getElementById("btn-bank-win").style.display = "none";
+        //document.getElementById("winnings").style.display = "none";
+        document.getElementById("btn-high").style.display = "none";
+        document.getElementById("btn-low").style.display = "none";
+        displayMessage("Max Gambles Reached !!!")
+        setTimeout(shuffle, 5000);
+    }
+    
 }
 
 function bankWinnings() {
