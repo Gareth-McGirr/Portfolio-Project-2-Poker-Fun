@@ -313,7 +313,8 @@ function isThreeOfKind(values) {
  * @returns {Boolean}
  */
 function isPair(values) {
-    if (values[0] === values[1] || values[1] === values[2] || values[2] === values[3] || values[3] === values[4]) {
+    if ((values[0] === values[1] && values[0] > 10 )|| (values[1] === values[2] && values[1] > 10) 
+    || (values[2] === values[3] && values[2] > 10) || (values[3] === values[4] && values[3] > 10)) {
         return true;
     } else {
         return false;
