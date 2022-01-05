@@ -2,13 +2,14 @@
 let deck = new Array();
 //global variable array to hold the players 5 cards 
 let myHand = new Array();
-
+//global variable to keep a count of cards in hi/low game
 let indexCounter = 0;
+//global array variable for high/low game card values.
 let hiLoValues = new Array;
 
 
 
-//event listeners
+//event listeners for buttons
 document.getElementById("btn-deal").addEventListener("click", dealCards);
 document.getElementById("btn-draw").addEventListener("click", drawCards);
 document.getElementById('btn-bank-win').addEventListener('click', bankWinnings);
@@ -47,24 +48,30 @@ function shuffle() {
     for (let i = 0; i < 1000; i++) {
         let location1 = Math.floor((Math.random() * deck.length));
         let location2 = Math.floor((Math.random() * deck.length));
+        
+        //swap cards using a temp variable
         let tmp = deck[location1];
-
         deck[location1] = deck[location2];
         deck[location2] = tmp;
     }
 }
 
 function takeBet() {
+    // get the bet amount
     let betAmount = document.getElementById("bet-amount").value;
     console.log(betAmount);
     let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
     console.log(currentChipsAmount);
+    // check if enough chips for bet
     if (currentChipsAmount > betAmount) {
+        // deduct bet from available chips
         let newChipsAmount = currentChipsAmount - betAmount;
         console.log(newChipsAmount);
+        //display new total chips amount
         document.getElementById("current-chips").innerText = newChipsAmount;
         return true;
     } else {
+        // return flase if bet amount is larger than available chips
         return false;
     }
 }
@@ -127,6 +134,7 @@ function drawCards() {
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
 
+    
 }
 
 
@@ -389,6 +397,7 @@ function displayWinningHandMessage(message) {
 
 function gambleWinnings(winMultiplyer) {
 
+    // clear the game table and 
     document.getElementById('card-table').innerHTML = '';
     document.getElementById("btn-deal").style.display = "none";
     document.getElementById("btn-bank-win").style.display = "inline-block";
@@ -412,7 +421,7 @@ function gambleWinnings(winMultiplyer) {
     indexCounter = 0;
     //display first card for high low game
     renderCard(myHand[indexCounter]);
-    
+
 
 }
 
@@ -433,6 +442,17 @@ function checkHighWin() {
         console.log("Lose-Card is lower");
         document.getElementById("winnings-amount").innerText = "0";
 
+        //hide the gamble winnings buttons
+        document.getElementById("btn-bank-win").style.display = "none";
+        document.getElementById("winnings").style.display = "none";
+        document.getElementById("btn-high").style.display = "none";
+        document.getElementById("btn-low").style.display = "none";
+        //display deal button again
+        document.getElementById("btn-deal").style.display = "inline-block";
+
+        //clear the game table for next deal
+        document.getElementById('card-table').innerHTML = '';
+
     }
 }
 
@@ -451,6 +471,17 @@ function checkLoWin() {
     } else {
         console.log("Lose-Card is higher");
         document.getElementById("winnings-amount").innerText = "0";
+
+        //hide the gamble winnings buttons
+        document.getElementById("btn-bank-win").style.display = "none";
+        document.getElementById("winnings").style.display = "none";
+        document.getElementById("btn-high").style.display = "none";
+        document.getElementById("btn-low").style.display = "none";
+        //display deal button again
+        document.getElementById("btn-deal").style.display = "inline-block";
+
+        //clear the game table for next deal
+        document.getElementById('card-table').innerHTML = '';
     }
 }
 
@@ -466,6 +497,7 @@ function bankWinnings() {
     document.getElementById("winnings").style.display = "none";
     document.getElementById("btn-high").style.display = "none";
     document.getElementById("btn-low").style.display = "none";
+    //display deal button again
     document.getElementById("btn-deal").style.display = "inline-block";
 
     //clear the game table for next deal
