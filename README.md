@@ -58,6 +58,27 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
   - If the user decides to bank the winnings, the winning chips will be added to the current chip balance. The user will then be able to start the next hand.
   - This will allow the user gamble and potentially increase their winning chips or take the safe option and bank the original winnings.
 
+## Technolgies
+
+- HTML
+  - The structure of the Website was developed using HTML as the main language.
+- CSS
+  - The Website was styled using custom CSS in an external file.
+- JavaScript
+  - The game play logic was created using JavaScript in an external file.
+- Visual Studio Code
+  - The website was developed using Visual Studio Code IDE
+- GitHub
+  - Source code is hosted on GitHub and delpoyed using Git Pages.
+- Git
+  - Used to commit and push code during the development of the Website
+- Font Awesome
+  - Icons obtained from https://fontawesome.com/ were used as the suits on the cards.
+- Favicon.io
+  - favicon files were created at https://favicon.io/favicon-converter/
+- balsamiq
+  - wireframes were created using balsamiq from https://balsamiq.com/wireframes/desktop/#
+
 ## Deployment
 
 ### Version Control
