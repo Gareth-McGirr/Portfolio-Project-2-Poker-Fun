@@ -43,13 +43,25 @@ nav ul {
 }
 
 main {
-    height: 500px;
+    
     background-color: green;
     text-align: center;
     
 }
 li {
     list-style: none;
+}
+
+.grey-background {
+    background-color: grey;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.black-background {
+    background-color: black;
+    color: white;
 }
 
 .top-content {
