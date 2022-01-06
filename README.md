@@ -57,5 +57,42 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
   - If the user guesses right, the winnings will be increased on each successful guess up to a maximum of 5 cards on the table and winning chip s will be added to the current chip balance.
   - If the user decides to bank the winnings, the winning chips will be added to the current chip balance. The user will then be able to start the next hand.
   - This will allow the user gamble and potentially increase their winning chips or take the safe option and bank the original winnings.
-,,
+
+## Deployment
+
+### Version Control
+
+The site was created using the Visual Studio Code editor and pushed to github to the remote repository ‘Portfolio-Project-2-Poker-Fun’.
+
+The following git commands were used throughout development to push code to the remote repo:
+
+git add <file> - This command was used to add the file(s) to the staging area before they are committed.
+
+git commit -m “commit message” - This command was used to commit changes to the local repository queue ready for the final step.
+
+git push - This command was used to push all committed code to the remote repository on github.
+
+### Deployment to Github Pages
+
+- The site was deployed to GitHub pages. The steps to deploy are as follows:
+  - In the GitHub repository, navigate to the Settings tab
+  - From the menu on left select 'Pages'
+  - From the source section drop-down menu, select the Branch: main
+  - Click 'Save'
+  - A live link will be displayed in a green banner when published successfully.
+
+The live link can be found here - https://gareth-mcgirr.github.io/Portfolio-Project-2-Poker-Fun
+
+### Clone the Repository Code Locally
+
+Navigate to the GitHub Repository you want to clone to use locally:
+
+- Click on the code drop down button
+- Click on HTTPS
+- Copy the repository link to the clipboard
+- Open your IDE of choice (git must be installed for the next steps)
+- Type git clone copied-git-url into the IDE terminal
+
+The project will now of been cloned on your local machine for use.
+
 
