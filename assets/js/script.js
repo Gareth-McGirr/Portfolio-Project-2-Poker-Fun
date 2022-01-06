@@ -56,8 +56,12 @@ function shuffle() {
     }
     document.getElementById("winnings").style.display = "none";
     document.getElementById("btn-deal").style.display = "inline-block";
+    
+    renderHandFaceDown();
     //clear the game table for next deal
-    document.getElementById('card-table').innerHTML = '';
+    //document.getElementById('card-table').innerHTML = '';
+    
+    
     displayMessage("Place Bet and Click Deal");
 
 }
@@ -138,7 +142,7 @@ function drawCards() {
 
     checkHandForWin(myHeldCards);
     //setTimeout(checkHandForWin(myHeldCards), 5000);
-    document.getElementById("btn-deal").style.display = "inline-block";
+    //document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
 
 
@@ -151,6 +155,23 @@ function drawCards() {
  * @param {Array} hand 
  * @param {boolean} isDeal 
  */
+
+function renderHandFaceDown() {
+    document.getElementById('card-table').innerHTML = '';
+    for (let i = 0; i < 5; i++) {
+        let card = document.createElement("div");
+       
+        card.className = "card face-down";
+        
+
+
+       
+        document.getElementById("card-table").appendChild(card);
+    }
+
+    console.log("Render cards face down")
+}
+
 function renderHand(hand, isDeal) {
     document.getElementById('card-table').innerHTML = '';
     for (let i = 0; i < hand.length; i++) {
@@ -391,7 +412,7 @@ function checkHandForWin(cards) {
         displayMessage("Two pair");
         setTimeout(gambleWinnings, 3000, 2);
     } else if (isPair(sortCardsByValue(cards))) {
-        displayMessaget("A Pair");
+        displayMessage("A Pair");
         setTimeout(gambleWinnings, 3000, 1);
     } else {
         displayMessage("No Winning hand");

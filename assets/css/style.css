@@ -51,6 +51,12 @@ main {
     max-height: 140px;
 }
 
+.face-down{
+    background-color: lightblue;
+    width: 90px;
+
+}
+
 .card .value {
     font-size: 15pt;
     font-family: sans-serif;
