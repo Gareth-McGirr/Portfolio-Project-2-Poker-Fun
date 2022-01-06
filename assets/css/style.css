@@ -45,6 +45,11 @@ nav ul {
 main {
     height: 500px;
     background-color: green;
+    text-align: center;
+    
+}
+li {
+    list-style: none;
 }
 
 .top-content {
