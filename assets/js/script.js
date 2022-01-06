@@ -567,3 +567,7 @@ function load() {
 }
 
 window.onload = load;
+
+window.onbeforeunload = function(e) {
+    return "Do you want to exit this page?";
+};
