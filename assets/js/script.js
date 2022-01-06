@@ -563,7 +563,7 @@ function bankWinnings() {
 
 function load() {
     deck = getDeck();
-    //shuffle();
+    shuffle();
 }
 
 window.onload = load;
