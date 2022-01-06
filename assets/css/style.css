@@ -11,7 +11,8 @@ header {
 
 nav {
     text-align: right;
-    display: flex; /* make responsive on different screen sizes */
+    display: flex;
+    /* make responsive on different screen sizes */
     align-items: center;
     width: 100%;
     justify-content: flex-end;
@@ -43,11 +44,12 @@ nav ul {
 }
 
 main {
-    
+
     background-color: green;
     text-align: center;
-    
+
 }
+
 li {
     list-style: none;
 }
@@ -90,7 +92,7 @@ li {
     border-width: medium;
     text-align: center;
     padding: 0;
-    
+
 }
 
 .card {
@@ -107,7 +109,7 @@ li {
     max-height: 140px;
 }
 
-.face-down{
+.face-down {
     background-color: lightblue;
     width: 90px;
 
@@ -192,4 +194,16 @@ button {
 
 #bet-amount {
     width: 50px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
 }
