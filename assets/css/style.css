@@ -1,11 +1,50 @@
 header {
-    min-height: 100px;
-    background-color: black;
+    display: flex;
+    width: 100%;
+    background-color: #343232;
+    margin: 0 auto 20px auto;
+    max-height: 150px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px;
+
+}
+
+nav {
+    text-align: right;
+    display: flex; /* make responsive on different screen sizes */
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+
+}
+
+nav li {
+    display: inline-block;
+    height: 100%;
+    margin: 0 20px;
+    line-height: 40px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: color .5s;
+}
+
+nav a {
+    text-decoration: none;
     color: white;
+}
+
+nav ul {
+    padding-right: 5%;
+}
+
+.active {
+    color: green;
+    font-weight: 700;
 }
 
 main {
     height: 500px;
+    background-color: green;
 }
 
 .top-content {
