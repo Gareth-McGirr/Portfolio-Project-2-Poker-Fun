@@ -7,7 +7,7 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
 ## Features
 
 - Header
-  - The header is displayed on both the home and game pages and just contains the Site's Logo.
+  - The header is displayed on both the home and game pages and contains the Site's Logo and navigation links.
   - The header contains the name of the website in order to keep branding consistent throughout the website.
 
 *Home Page*
@@ -22,12 +22,12 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
 
 - Chip Balance
 
-  - At the top of the game board, the users current chips are displayed which is defaulted to 1000 starting chips when the user intiates game play. The users chip balance is displayed at all times. The chip balance is updated when the user bets or wins a hand.
+  - Below the main game area, the users current chips are displayed which is defaulted to 1000 starting chips when the user intiates game play. The users chip balance is displayed at all times. The chip balance is updated when the user bets or wins a hand.
   - This will allow the user to keep track of how many chips they have in order to decide how much they would like to bet.
 
 - Betting Functionality
 
-  - Before the user initiates the round with the deal button, there is an input box that will allow them to bet some of their chips on the hand. The input is type number and is set to default at 10 and increments / decrements in multiples of 10. A user cannot bet more chips that their current chip balance.
+  - Before the user initiates the round with the deal button, there is an input box that will allow them to bet some of their chips on the hand. The input is type number and is set to default at 10 and increments / decrements in multiples of 10. A user cannot bet more chips than their current chip balance.
   - This will allow the user to gamble their chosen amount on each hand before the round is started.
 
 - Deal
@@ -48,13 +48,13 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
 - Draw
 
   - Once the user has decided which cards they want to hold, if any, they can click the draw button to get new cards.
-  - This will allow users to get new cards in an attempt to get a better hand than the original drawn cards.
+  - This will allow users to get new cards in an attempt to get a better hand than the original dealt cards.
 
 - Gamble Winnings   
 
   - If the user has a winning hand after they have drawn the cards, they will be given the option to gamble those winnings or bank the chips. The user will be presented with a single card and they have to guess whether the next card drawn will be higher or lower than the current card. This will be done by using the respective 'High and 'Low' buttons.
   - If the user guesses wrong, they will lose the winnings.
-  - If the user guesses right, the winnings will be increased on each successful guess up to a maximum of 5 cards on the table and winning chip s will be added to the current chip balance.
+  - If the user guesses right, the winnings will be doubled on each successful guess up to a maximum of 5 cards on the table and winning chips will be added to the current chip balance.
   - If the user decides to bank the winnings, the winning chips will be added to the current chip balance. The user will then be able to start the next hand.
   - This will allow the user gamble and potentially increase their winning chips or take the safe option and bank the winnings.
 
@@ -64,7 +64,7 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
     - Wins: Bet x 500
            
             
-- Straight Flush<
+- Straight Flush
   - Any 5 cards of the same suit in order
     - Wins: Bet x 60
           
@@ -111,12 +111,13 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
 - Git
   - Used to commit and push code during the development of the Website
 - Font Awesome
-  - Icons obtained from https://fontawesome.com/ were used as the suits on the cards.
+  - Icon obtained from https://fontawesome.com/ was used for GitHub Icon in the footer.
 - Favicon.io
   - favicon files were created at https://favicon.io/favicon-converter/
 - balsamiq
   - wireframes were created using balsamiq from https://balsamiq.com/wireframes/desktop/#
-
+- Canva
+  - This was used to create the logo in header and make the images for cards 
 ## Deployment
 
 ### Version Control
@@ -152,6 +153,6 @@ Navigate to the GitHub Repository you want to clone to use locally:
 - Open your IDE of choice (git must be installed for the next steps)
 - Type git clone copied-git-url into the IDE terminal
 
-The project will now of been cloned on your local machine for use.
+The project will now have been cloned on your local machine for use.
 
 

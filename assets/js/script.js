@@ -54,29 +54,28 @@ function shuffle() {
         deck[location1] = deck[location2];
         deck[location2] = tmp;
     }
+
     document.getElementById("winnings").style.display = "none";
     document.getElementById("btn-deal").style.display = "inline-block";
-    
-    renderHandFaceDown();
-    //clear the game table for next deal
-    //document.getElementById('card-table').innerHTML = '';
-    
-    
+    //dispaly 5 images of back of cards on game table
+    renderHandFaceDown();   
     displayMessage("Place Bet and Click Deal");
 
 }
 
+/**
+ * Take chips from availble chips if enough chips available and returns true else
+ * returns false if not enough chips available for bet 
+ * @returns boolean
+ */
 function takeBet() {
     // get the bet amount
     let betAmount = document.getElementById("bet-amount").value;
-    console.log(betAmount);
     let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
-    console.log(currentChipsAmount);
     // check if enough chips for bet
     if (currentChipsAmount >= betAmount) {
         // deduct bet from available chips
         let newChipsAmount = currentChipsAmount - betAmount;
-        console.log(newChipsAmount);
         //display new total chips amount
         document.getElementById("current-chips").innerText = newChipsAmount;
         return true;
@@ -91,7 +90,6 @@ function takeBet() {
  * and adds to players hand 
  */
 function dealCards() {
-
     //take the bet amount chips from the current chips
     if (takeBet()) {
         //shuffle();
@@ -108,19 +106,13 @@ function dealCards() {
         displayMessage("Click Cards to Hold---------Click Draw to get new cards.");
     } else {
         displayMessage("Insufficent chips for this bet !!!!");
-    }
-
-    
+    }   
 }
 
 /**
  * creates a new 5 card hand from held cards plus draw new cards from deck
  */
-function drawCards() {
-
-    // TO DO: POSSIBLY REPLACE CARDS IN THE ARRAY RATHER THAN CREATE A NEW ARRAY ? 
-    // CARDS THAT ARE HELD WOULD THEN KEEP THE SAME POSITION ON THE GAME TABLE AFTER DRAW.   
-
+function drawCards() { 
     //new array to hold the cards that playerhas held
     let myHeldCards = [];
     //get the cards that are dealt
@@ -140,15 +132,21 @@ function drawCards() {
 
     //display new hand on the game table
     renderHand(myHeldCards, false);
-
     checkHandForWin(myHeldCards);
-    //setTimeout(checkHandForWin(myHeldCards), 5000);
-    //document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("btn-draw").style.display = "none";
-
-
 }
 
+/**
+ *  Display images of 5 cards face down
+ */
+function renderHandFaceDown() {
+    document.getElementById('card-table').innerHTML = '';
+    for (let i = 0; i < 5; i++) {
+        let card = document.createElement("div");      
+        card.className = "card face-down";       
+        document.getElementById("card-table").appendChild(card);
+    }
+}
 
 /**
  * creates images for each card in array of card objects 
@@ -156,41 +154,27 @@ function drawCards() {
  * @param {Array} hand 
  * @param {boolean} isDeal 
  */
-
-function renderHandFaceDown() {
-    document.getElementById('card-table').innerHTML = '';
-    for (let i = 0; i < 5; i++) {
-        let card = document.createElement("div");
-       
-        card.className = "card face-down";
-        
-
-
-       
-        document.getElementById("card-table").appendChild(card);
-    }
-
-    console.log("Render cards face down");
-}
-
 function renderHand(hand, isDeal) {
     document.getElementById('card-table').innerHTML = '';
     for (let i = 0; i < hand.length; i++) {
+        // create the elements
         let card = document.createElement("div");
         let value = document.createElement("div");
         let suit = document.createElement("div");
         let hold = document.createElement("div");
+        // add classes to the elements
         card.className = "card dealt-card";
         value.className = "value";
         suit.className = "suit " + hand[i].suit;
         hold.className = "hold";
 
+        // add relevent value
         value.innerHTML = hand[i].value;
         hold.innerHTML = "Hold";
+        // create image inside card
         card.appendChild(value);
         card.appendChild(suit);
         card.appendChild(hold);
-
 
         //if it is the deal then add click event to each card displayed
         if (isDeal) {
@@ -198,11 +182,16 @@ function renderHand(hand, isDeal) {
                 this.classList.toggle("selected");
             });
         }
+        // add the card to the game table
         document.getElementById("card-table").appendChild(card);
     }
 
 }
 
+/**
+ *  Renders a single card on game table
+ * @param {*} aCard 
+ */
 function renderCard(aCard) {
     let card = document.createElement("div");
     let value = document.createElement("div");
@@ -212,17 +201,11 @@ function renderCard(aCard) {
     value.className = "value";
     suit.className = "suit " + aCard.suit;
 
-
     value.innerHTML = aCard.value;
-
     card.appendChild(value);
     card.appendChild(suit);
     card.appendChild(hold);
-
-
-
     document.getElementById("card-table").appendChild(card);
-
 }
 
 /**
@@ -232,18 +215,20 @@ function renderCard(aCard) {
  * @returns Boolean
  */
 function isFlush(cards) {
+    // pass through array and check that all cards have same suit
     for (let i = 0; i < (cards.length - 1); i++) {
-        console.log(cards[i].suit);
-        console.log(cards[i + 1].suit);
-        console.log("----------------");
         if (cards[i].suit != cards[i + 1].suit) {
-            return false;
+            return false; //if any card has different suit to rest then return false
         }
     }
-
     return true;
 }
 
+/**
+ * Checks if cards are a straight flush starting from 10
+ * @param {Array} cards 
+ * @returns boolean
+ */
 function isRoyalFlush(cards) {
     if (isStraightFlush(cards) && cards[0].value === "10") {
         return true;
@@ -252,6 +237,11 @@ function isRoyalFlush(cards) {
     }
 }
 
+/**
+ * 
+ * @param {*} cards 
+ * @returns 
+ */
 function isStraightFlush(cards) {
     if (isFlush(cards) && isStraight(sortCardsByValue(cards))) {
         return true;
@@ -261,7 +251,11 @@ function isStraightFlush(cards) {
 
 
 }
-
+/**
+ *  Converts face cards into values
+ * @param {*} cards 
+ * @returns 
+ */
 function convertCardsToValues(cards) {
     let values = [];
     for (let i = 0; i < cards.length; i++) {
@@ -286,18 +280,16 @@ function convertCardsToValues(cards) {
 }
 
 /**
- * 
+ * Sort cards in ascending order
  * @param {Array} cards 
  * @returns {Array} values
  */
 function sortCardsByValue(cards) {
     let values = convertCardsToValues(cards);
-    console.log(values);
+    // sort array in ascending order
     values.sort(function (a, b) {
         return a - b;
     });
-    console.log(values);
-    console.log("----------------------------");
     return values;
 }
 
@@ -331,7 +323,7 @@ function isThreeOfKind(values) {
 }
 
 /**
- * Checks if first 2 values in array are equal
+ * Checks if array contains a matching pair of values greater than 10
  * @param {Array} values 
  * @returns {Boolean}
  */
@@ -344,6 +336,11 @@ function isPair(values) {
     }
 }
 
+/**
+ *  checks if array contains a pair and 3 of a kind
+ * @param {*} values 
+ * @returns 
+ */
 function isFullHouse(values) {
     //let valuesReversed = values.slice().reverse();
     if (((values[0] === values[1]) && (values[2] === values[3] && values[2] == values[4])) ||
@@ -370,12 +367,8 @@ function isTwoPair(values) {
 }
 
 function isStraight(values) {
-    console.log("checking for straight");
-    console.log(values);
     for (let i = 0; i < values.length - 1; i++) {
         if (values[i + 1] != (values[i] + 1)) {
-            console.log("value " + i + " is " + values[i]);
-            console.log("value " + i + " is " + values[i + 1]);
             return false;
         }
     }
@@ -385,6 +378,10 @@ function isStraight(values) {
 
 }
 
+/**
+ * Checks for each of the winning hands and calls gamble winnings if winning hand is found
+ * @param {*} cards 
+ */
 function checkHandForWin(cards) {
     if (isRoyalFlush(cards)) {
         displayMessage("Royal Flush");
@@ -422,10 +419,18 @@ function checkHandForWin(cards) {
 
 }
 
+/**
+ * Display message to user under the game table
+ * @param {String} message 
+ */
 function displayMessage(message) {
     document.getElementById("game-display-message").innerText = message;
 }
 
+/**
+ * Displays buttons and first card for hi/lo game
+ * @param {*} winMultiplyer 
+ */
 function gambleWinnings(winMultiplyer) {
 
     // clear the game table and 
@@ -458,15 +463,14 @@ function gambleWinnings(winMultiplyer) {
 
 }
 
-
+/**
+ * Called when high button clicked and checks if next card is higher than the previous card dealt
+ */
 function checkHighWin() {
-    console.log(' high clicked');
     indexCounter++;
     renderCard(myHand[indexCounter]);
     if (hiLoValues[indexCounter] >= hiLoValues[indexCounter - 1]) {
-        console.log("Win-Card is higher");
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
-
         //double the current winnings
         currentWinnings *= 2;
         //display new winnings
@@ -480,13 +484,8 @@ function checkHighWin() {
         document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-
-
-        //clear the game table for next deal
-        //document.getElementById('card-table').innerHTML = '';
-
     }
-
+    // checks if last card in hi/lo game and if so banks winnings and returns to main poker game
     if (indexCounter === 4) {
         document.getElementById("btn-bank-win").style.display = "none";
         //document.getElementById("winnings").style.display = "none";
@@ -501,14 +500,14 @@ function checkHighWin() {
     }
 }
 
+/**
+ * Called when low button clicked and checks if next card is lower than the previous card dealt
+ */
 function checkLoWin() {
-    console.log(' Low clicked');
     indexCounter++;
     renderCard(myHand[indexCounter]);
-    if (hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1]) {
-        console.log("Win-Card is lower");
+    if (hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1]) {      
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
-
         //double the current winnings
         currentWinnings *= 2;
         //display new winnings
@@ -522,14 +521,10 @@ function checkLoWin() {
         document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-
-
-        //clear the game table for next deal
-        //document.getElementById('card-table').innerHTML = '';
     }
+    // checks if last card in hi/lo game and if so banks winnings and returns to main poker game
     if (indexCounter === 4) {
         document.getElementById("btn-bank-win").style.display = "none";
-        //document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
         displayMessage("Max Gambles Reached !!!");
@@ -542,8 +537,10 @@ function checkLoWin() {
 
 }
 
+/**
+ * Banks the winning to the players chips and returns to the main poker game
+ */
 function bankWinnings() {
-    console.log('Bank Win clicked');
     let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
     let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
     let newChipsAmount = currentChipsAmount + currentWinnings;
@@ -562,12 +559,16 @@ function bankWinnings() {
     shuffle();
 }
 
+/**
+ *  creates a new deck of cards and shuffles them when page loads 
+ */
 function load() {
     deck = getDeck();
     shuffle();
 }
 
 window.onload = load;
+
 
 window.onbeforeunload = function(e) {
     return "Do you want to exit this page?";
