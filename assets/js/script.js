@@ -462,7 +462,7 @@ function checkHighWin() {
     console.log(' high clicked');
     indexCounter++;
     renderCard(myHand[indexCounter]);
-    if (hiLoValues[indexCounter] > hiLoValues[indexCounter - 1]) {
+    if (hiLoValues[indexCounter] >= hiLoValues[indexCounter - 1]) {
         console.log("Win-Card is higher")
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
 
@@ -504,7 +504,7 @@ function checkLoWin() {
     console.log(' Low clicked');
     indexCounter++;
     renderCard(myHand[indexCounter]);
-    if (hiLoValues[indexCounter] < hiLoValues[indexCounter - 1]) {
+    if (hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1]) {
         console.log("Win-Card is lower")
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
 
