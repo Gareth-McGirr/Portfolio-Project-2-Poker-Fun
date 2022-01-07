@@ -109,9 +109,11 @@ li {
 }
 
 .face-down {
-    background-color: lightblue;
-    width: 90px;
-
+    background-image: url('../images/card_back.png');
+    width: 102px;
+    background-position: 5px;
+    background-repeat: no-repeat;
+    background-color: #9abae6;
 }
 
 .card .value {
@@ -120,7 +122,6 @@ li {
 }
 
 .card .suit {
-    /* background-image: url('../images/card_suits.png'); */
     height: 100px;
     width: 90px;
 }
