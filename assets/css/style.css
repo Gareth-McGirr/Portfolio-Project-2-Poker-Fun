@@ -246,6 +246,11 @@ footer p a:hover {
         background-position: 0;
         width: 57px;
     }
+
+    .selected {
+        margin-top: 5px;
+        margin-bottom: 50px;
+    }
 }
 
 @media screen and (min-width: 320px) and (max-width: 467px) {
