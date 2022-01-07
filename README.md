@@ -56,7 +56,45 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
   - If the user guesses wrong, they will lose the winnings.
   - If the user guesses right, the winnings will be increased on each successful guess up to a maximum of 5 cards on the table and winning chip s will be added to the current chip balance.
   - If the user decides to bank the winnings, the winning chips will be added to the current chip balance. The user will then be able to start the next hand.
-  - This will allow the user gamble and potentially increase their winning chips or take the safe option and bank the original winnings.
+  - This will allow the user gamble and potentially increase their winning chips or take the safe option and bank the winnings.
+
+*Winning Hands*
+- Royal Flush
+  - Ace, King, Queen, Jack and 10 of same suit
+    - Wins: Bet x 500
+           
+            
+- Straight Flush<
+  - Any 5 cards of the same suit in order
+    - Wins: Bet x 60
+          
+           
+- 4 of a Kind
+  - 4 cards of the same value and any other card
+  - Wins: Bet x 25          
+- Full House
+  - 3 cards of same value and 2 cards of another value
+    - Wins: Bet x 10
+- Flush
+  - 5 cards of the same suit
+    - Wins: Bet x 5
+            
+- Straight
+  - Any 5 cards in order
+    - Wins: Bet x 4
+          
+- 3 of a Kind
+  - 3 cards of the same value
+    - Wins: Bet x 3
+            
+- 2 Pairs
+  - 2 pairs of the same value
+    - Wins: Bet x 2
+            
+- Pair - Jacks or Better
+  - pair of J, Q, K or A
+    - Wins: Bet x 1
+          
 
 ## Technolgies
 
