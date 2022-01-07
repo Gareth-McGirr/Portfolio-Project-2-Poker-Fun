@@ -62,9 +62,9 @@ li {
     list-style: none;
 }
 
-.grey-background {
-    background-color: grey;
-    color: white;
+.white-background {
+    background-color: white;
+    color: black;
     padding: 0;
     margin: 0;
 }
