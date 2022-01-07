@@ -66,16 +66,8 @@ li {
     color: white;
 }
 
-.top-content {
-    min-height: 50px;
-    background-color: green;
-    text-align: center;
-}
-
-
-
 #card-table {
-    min-height: 250px;
+    min-height: 220px;
     background-color: green;
     border-style: solid;
     border-width: medium;
@@ -88,12 +80,11 @@ li {
 #game-display-message {
     min-height: 30px;
     background-color: green;
-    border-style: solid;
-    border-width: medium;
     text-align: center;
     padding: 0;
 
 }
+
 
 .card {
     padding: 10px;
@@ -161,21 +152,23 @@ li {
 
 .game-controls-area {
     min-height: 50px;
-    background-color: white;
+    background-color: green;
 
 
 }
 
 .game-controls {
     display: inline-block;
-    width: 45%;
-    padding-top: 40px;
+    width: 33%;
+    padding: 0;
     font-size: 20px;
     text-align: center;
 }
 
 button {
     font-size: 20px;
+    background-color: black;
+    color: white;
 }
 
 #btn-draw {
@@ -244,6 +237,11 @@ button {
 @media screen and (min-width: 820px) {
     .card {
         margin: 30px 20px;
+    }
+
+    .selected {
+        margin-top: 5px;
+        margin-bottom: 36px;
     }
 
 }
