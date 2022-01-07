@@ -104,8 +104,7 @@ li {
     font-size: 14pt;
     text-align: center;
     color: black;
-    margin: 20px;
-    margin-top: 30px;
+    margin: 30px 3px;
     max-height: 140px;
 }
 
@@ -121,22 +120,29 @@ li {
 }
 
 .card .suit {
-    background-image: url('../images/card_suits.png');
+    /* background-image: url('../images/card_suits.png'); */
     height: 100px;
     width: 90px;
 }
 
 .card .diamonds {
-    background-position-y: 100px;
+    background-image: url('../images/diamond.png');
+    padding-right: 10px;
 }
 
 .card .hearts {
-    background-position-x: 90px;
+    background-image: url('../images/heart.png');
+    padding-right: 10px;
 }
 
 .card .clubs {
-    background-position-x: 90px;
-    background-position-y: 100px;
+    background-image: url('../images/clubb.png');
+    padding-right: 10px;
+}
+
+.card .spades {
+    background-image: url('../images/spade.png');
+    padding-right: 10px;
 }
 
 .selected {
@@ -206,4 +212,37 @@ button {
         top: 100%;
         left: 0;
     }
+
+    .card {
+        margin: 30px 3px;
+        max-width: 15%;
+        overflow: hidden;
+    }
+
+    .card .diamonds {
+        background-size: 95px;
+        background-repeat: no-repeat;
+    }
+    
+    .card .hearts {
+        background-size: 95px;
+        background-repeat: no-repeat;
+    }
+    
+    .card .clubs {
+        background-size: 95px;
+        background-repeat: no-repeat;
+    }
+    
+    .card .spades {
+        background-size: 95px;
+        background-repeat: no-repeat;
+    }
+}
+
+@media screen and (min-width: 820px) {
+    .card {
+        margin: 30px 20px;
+    }
+
 }
