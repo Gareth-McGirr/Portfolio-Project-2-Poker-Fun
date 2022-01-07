@@ -1,11 +1,11 @@
 //global variable array to hold the deck of cards 
-let deck = new Array();
+let deck = [];
 //global variable array to hold the players 5 cards 
-let myHand = new Array();
+let myHand = [];
 //global variable to keep a count of cards in hi/low game
 let indexCounter = 0;
 //global array variable for high/low game card values.
-let hiLoValues = new Array;
+let hiLoValues = [];
 
 
 
@@ -25,7 +25,7 @@ function getDeck() {
     let cards = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     let suits = ["diamonds", "hearts", "spades", "clubs"];
 
-    let deck = new Array();
+    let deck = [];
 
     for (let i = 0; i < suits.length; i++) {
         for (let x = 0; x < cards.length; x++) {
@@ -105,9 +105,9 @@ function dealCards() {
         //hide the deal button after the initial deal and display the draw button
         document.getElementById("btn-deal").style.display = "none";
         document.getElementById("btn-draw").style.display = "inline-block";
-        displayMessage("Click Cards to Hold---------Click Draw to get new cards.")
+        displayMessage("Click Cards to Hold---------Click Draw to get new cards.");
     } else {
-        displayMessage("Insufficent chips for this bet !!!!")
+        displayMessage("Insufficent chips for this bet !!!!");
     }
 
     
@@ -122,14 +122,14 @@ function drawCards() {
     // CARDS THAT ARE HELD WOULD THEN KEEP THE SAME POSITION ON THE GAME TABLE AFTER DRAW.   
 
     //new array to hold the cards that playerhas held
-    let myHeldCards = new Array();
+    let myHeldCards = [];
     //get the cards that are dealt
     let drawnCards = document.getElementsByClassName("dealt-card");
 
     // go through list of cards and add held cards to myHeldCards array
     for (let i = 0; i < 5; i++) {
         if (drawnCards[i].classList.contains("selected")) {
-            myHeldCards.push(myHand[i])
+            myHeldCards.push(myHand[i]);
         }
     }
 
@@ -170,7 +170,7 @@ function renderHandFaceDown() {
         document.getElementById("card-table").appendChild(card);
     }
 
-    console.log("Render cards face down")
+    console.log("Render cards face down");
 }
 
 function renderHand(hand, isDeal) {
@@ -235,7 +235,7 @@ function isFlush(cards) {
     for (let i = 0; i < (cards.length - 1); i++) {
         console.log(cards[i].suit);
         console.log(cards[i + 1].suit);
-        console.log("----------------")
+        console.log("----------------");
         if (cards[i].suit != cards[i + 1].suit) {
             return false;
         }
@@ -263,8 +263,8 @@ function isStraightFlush(cards) {
 }
 
 function convertCardsToValues(cards) {
-    let values = new Array();
-    for (i = 0; i < cards.length; i++) {
+    let values = [];
+    for (let i = 0; i < cards.length; i++) {
         switch (cards[i].value) {
             case 'A':
                 values.push(14);
@@ -291,10 +291,10 @@ function convertCardsToValues(cards) {
  * @returns {Array} values
  */
 function sortCardsByValue(cards) {
-    let values = convertCardsToValues(cards)
+    let values = convertCardsToValues(cards);
     console.log(values);
     values.sort(function (a, b) {
-        return a - b
+        return a - b;
     });
     console.log(values);
     console.log("----------------------------");
@@ -309,7 +309,7 @@ function sortCardsByValue(cards) {
 function isFourOfKind(values) {
     if ((values[0] === values[1] && values[0] === values[2] && values[0] === values[3]) ||
         (values[1] === values[2] && values[1] === values[3] && values[1] === values[4])) {
-        return true
+        return true;
     } else {
         return false;
     }
@@ -324,7 +324,7 @@ function isThreeOfKind(values) {
     if ((values[0] === values[1] && values[0] === values[2]) ||
         (values[1] === values[2] && values[1] === values[3]) ||
         (values[2] === values[3] && values[2] === values[4])) {
-        return true
+        return true;
     } else {
         return false;
     }
@@ -375,7 +375,7 @@ function isStraight(values) {
     for (let i = 0; i < values.length - 1; i++) {
         if (values[i + 1] != (values[i] + 1)) {
             console.log("value " + i + " is " + values[i]);
-            console.log("value " + i + " is " + values[i + 1])
+            console.log("value " + i + " is " + values[i + 1]);
             return false;
         }
     }
@@ -453,7 +453,7 @@ function gambleWinnings(winMultiplyer) {
     //display first card for high low game
     renderCard(myHand[indexCounter]);
 
-    displayMessage("Bank your winnings or Gamble High/Low to double winnings    -    Max of 5 cards!")
+    displayMessage("Bank your winnings or Gamble High/Low to double winnings    -    Max of 5 cards!");
 
 
 }
@@ -464,7 +464,7 @@ function checkHighWin() {
     indexCounter++;
     renderCard(myHand[indexCounter]);
     if (hiLoValues[indexCounter] >= hiLoValues[indexCounter - 1]) {
-        console.log("Win-Card is higher")
+        console.log("Win-Card is higher");
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
 
         //double the current winnings
@@ -492,7 +492,7 @@ function checkHighWin() {
         //document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-        displayMessage("Max Gambles Reached !!!")
+        displayMessage("Max Gambles Reached !!!");
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
         let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
         let newChipsAmount = currentChipsAmount + currentWinnings;
@@ -506,7 +506,7 @@ function checkLoWin() {
     indexCounter++;
     renderCard(myHand[indexCounter]);
     if (hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1]) {
-        console.log("Win-Card is lower")
+        console.log("Win-Card is lower");
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
 
         //double the current winnings
@@ -532,7 +532,7 @@ function checkLoWin() {
         //document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-        displayMessage("Max Gambles Reached !!!")
+        displayMessage("Max Gambles Reached !!!");
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
         let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
         let newChipsAmount = currentChipsAmount + currentWinnings;
