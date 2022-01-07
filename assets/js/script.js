@@ -73,7 +73,7 @@ function takeBet() {
     let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
     console.log(currentChipsAmount);
     // check if enough chips for bet
-    if (currentChipsAmount > betAmount) {
+    if (currentChipsAmount >= betAmount) {
         // deduct bet from available chips
         let newChipsAmount = currentChipsAmount - betAmount;
         console.log(newChipsAmount);
