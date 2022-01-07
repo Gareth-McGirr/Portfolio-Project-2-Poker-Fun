@@ -1,5 +1,10 @@
+html, body {
+    height: 100%;
+}
+
 body {
-    margin: 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -48,10 +53,9 @@ nav ul {
 }
 
 main {
-
     background-color: green;
     text-align: center;
-
+    flex: 1 0 auto;
 }
 
 li {
@@ -89,7 +93,6 @@ li {
 
 }
 
-
 .card {
     padding: 10px;
     border: solid 1px #808080;
@@ -126,24 +129,28 @@ li {
     background-image: url('../images/diamond.png');
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .card .hearts {
     background-image: url('../images/heart.png');
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .card .clubs {
     background-image: url('../images/clubb.png');
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .card .spades {
     background-image: url('../images/spade.png');
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .selected {
@@ -162,8 +169,6 @@ li {
 .game-controls-area {
     min-height: 50px;
     background-color: green;
-
-
 }
 
 .game-controls {
@@ -205,9 +210,26 @@ button {
     width: 50px;
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+footer {
+    flex-shrink: 0;
+    background: green;
+    color: white;
+    text-align: center;
+}
+
+footer p a {
+    text-decoration: none;
+    color: #fff;
+}
+
+footer p a:hover {
+    color: #000;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
     .card {
         margin: 30px 3px;
+        width: 57px;
         max-width: 15%;
         overflow: hidden;
     }
@@ -217,13 +239,20 @@ button {
     }
 
     .card .suit {
-        width: 35px;
+        width: 100%;
         height: 35px;
     }
 
     .face-down {
         background-size: contain;
         background-position: 0;
+        width: 57px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 467px) {
+    .card .suit {
+        width: 100%;
     }
 }
 
