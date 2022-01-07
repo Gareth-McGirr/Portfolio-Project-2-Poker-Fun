@@ -105,11 +105,12 @@ function dealCards() {
         //hide the deal button after the initial deal and display the draw button
         document.getElementById("btn-deal").style.display = "none";
         document.getElementById("btn-draw").style.display = "inline-block";
+        displayMessage("Click Cards to Hold---------Click Draw to get new cards.")
     } else {
-        displayMessage("Insufficent funds for this bet !!!!")
+        displayMessage("Insufficent chips for this bet !!!!")
     }
 
-    displayMessage("Click Cards to Hold---------Click Draw to get new cards.")
+    
 }
 
 /**
