@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    color: white;
 }
 
 body {
@@ -10,7 +11,7 @@ body {
 header {
     display: flex;
     width: 100%;
-    background-color: #343232;
+    background-color: black;
     margin: 0 auto 20px auto;
     max-height: 150px;
     border-radius: 5px;
@@ -21,7 +22,6 @@ header {
 nav {
     text-align: right;
     display: flex;
-    /* make responsive on different screen sizes */
     align-items: center;
     width: 100%;
     justify-content: flex-end;
@@ -48,7 +48,7 @@ nav ul {
 }
 
 .active {
-    color: green;
+    color: #00C700;
     font-weight: 700;
 }
 
@@ -77,8 +77,6 @@ li {
 #card-table {
     min-height: 220px;
     background-color: green;
-    border-style: solid;
-    border-width: medium;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -212,7 +210,7 @@ button {
 
 footer {
     flex-shrink: 0;
-    background: green;
+    background: black;
     color: white;
     text-align: center;
 }
@@ -223,7 +221,7 @@ footer p a {
 }
 
 footer p a:hover {
-    color: #000;
+    color: #00C700;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
