@@ -105,7 +105,7 @@ p.hands.no-mt {
     margin-top: 0;
 }
 
-.instructions, .winnings-half {
+.instructions, .winnings-half, .error-bg{
     background-color: #081c0c78;
     margin: 0;
 }
@@ -279,6 +279,33 @@ footer p a:hover {
     color: #00C700;
 }
 
+/* 404 */
+
+.home-link {
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.home-link:hover {
+    color: #000;
+    font-weight: 900;
+}
+
+.error-bg {
+    height: 93.5%;
+}
+
+.error-pic {
+    width: 100%;
+}
+
+.error-pic img {
+    width: 60%;
+    height: auto;
+    padding-bottom: 10px;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px) {
     .card {
         margin: 30px 3px;
@@ -363,5 +390,9 @@ footer p a:hover {
     .winnings-half .winning-hand-img {
         width: 90%;
         
+    }
+
+    .error-pic img {
+        width: 30%;
     }
 }
