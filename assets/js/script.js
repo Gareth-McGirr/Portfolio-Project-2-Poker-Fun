@@ -45,15 +45,15 @@ function getDeck() {
  */
 function shuffle() {
     deck = getDeck();
-    // for (let i = 0; i < 1000; i++) {
-    //     let location1 = Math.floor((Math.random() * deck.length));
-    //     let location2 = Math.floor((Math.random() * deck.length));
+    for (let i = 0; i < 1000; i++) {
+        let location1 = Math.floor((Math.random() * deck.length));
+        let location2 = Math.floor((Math.random() * deck.length));
 
-    //     //swap cards using a temp variable
-    //     let tmp = deck[location1];
-    //     deck[location1] = deck[location2];
-    //     deck[location2] = tmp;
-    // }
+        //swap cards using a temp variable
+        let tmp = deck[location1];
+        deck[location1] = deck[location2];
+        deck[location2] = tmp;
+    }
 
     //Royal Flush Test
     // myHand[0] = deck[09];
@@ -98,11 +98,11 @@ function shuffle() {
     // myHand[4] = deck[45];
 
     //Straight A2345
-    myHand[0] = deck[0];
-    myHand[1] = deck[14];
-    myHand[2] = deck[28];
-    myHand[3] = deck[42];
-    myHand[4] = deck[4];
+    // myHand[0] = deck[0];
+    // myHand[1] = deck[14];
+    // myHand[2] = deck[28];
+    // myHand[3] = deck[42];
+    // myHand[4] = deck[4];
 
     //3 of a kind
     // myHand[0] = deck[11];
@@ -166,9 +166,9 @@ function dealCards() {
         //shuffle();
 
         //deal 5 cards from the deck and add to hand
-        // for (let i = 0; i < 5; i++) {
-        //     myHand[i] = deck.pop();
-        // }
+        for (let i = 0; i < 5; i++) {
+            myHand[i] = deck.pop();
+        }
         //display the hand on the game table
         renderHand(myHand, true);
 
@@ -553,7 +553,9 @@ function gambleWinnings(winMultiplyer) {
 function checkHighWin() {
     indexCounter++;
     renderCard(myHand[indexCounter]);
-    if (hiLoValues[indexCounter] >= hiLoValues[indexCounter - 1]) {
+    if ((hiLoValues[indexCounter] >= hiLoValues[indexCounter - 1])
+        || (hiLoValues[indexCounter] === 14 
+            || hiLoValues[indexCounter - 1] === 14)) {
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
         //double the current winnings
         currentWinnings *= 2;
@@ -590,7 +592,9 @@ function checkHighWin() {
 function checkLoWin() {
     indexCounter++;
     renderCard(myHand[indexCounter]);
-    if (hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1]) {
+    if ((hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1])
+        || (hiLoValues[indexCounter] === 14 
+            || hiLoValues[indexCounter - 1] === 14)) {
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
         //double the current winnings
         currentWinnings *= 2;
