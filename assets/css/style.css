@@ -53,25 +53,62 @@ nav ul {
 }
 
 main {
-    background-color: green;
+    background-image: url(../images/felt.png);
     text-align: center;
     flex: 1 0 auto;
+    border-radius: 5px;
 }
 
 li {
     list-style: none;
 }
 
-.white-background {
-    background-color: white;
-    color: black;
-    padding: 0;
+/* Home Page */
+
+.flex-main {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.instructions {
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.winning-hands {
+    width: 100%;
+}
+
+.winnings-half > p {
     margin: 0;
 }
 
-.black-background {
-    background-color: black;
-    color: white;
+.winnings-half {
+    width: 100%;
+}
+
+p.hands {
+    margin: 5px 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+p.hands.no-mt {
+    margin-top: 0;
+}
+
+.instructions, .winnings-half {
+    background-color: #081c0c78;
+    margin: 0;
+}
+
+.title {
+    width: 100%;
+}
+
+.desktop-only {
+    display: none;
 }
 
 #card-table {
@@ -213,6 +250,8 @@ footer {
     background: black;
     color: white;
     text-align: center;
+    border-radius: 5px;
+    margin-top: 1px;
 }
 
 footer p a {
@@ -269,4 +308,36 @@ footer p a:hover {
         margin-bottom: 36px;
     }
 
+    
+    .flex-main {
+        flex-direction: row;
+    }
+
+    .instructions {
+        width: 30%;
+    }
+    
+    .winning-hands {
+        display: flex;
+        width: 70%;
+    }
+
+    .winnings-half {
+        width: 50%;
+    }
+    
+    .instructions, .winnings-half {
+        margin: 0 20px;
+    }
+
+    p.hands.no-mt {
+        margin-top: 5px;
+    }
+
+    .desktop-only {
+        display: block;
+    }
 }
+
+
+
