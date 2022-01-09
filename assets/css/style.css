@@ -6,6 +6,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    margin: 0;
 }
 
 header {
@@ -111,9 +112,10 @@ p.hands.no-mt {
     display: none;
 }
 
+/* Game Page */
+
 #card-table {
     min-height: 220px;
-    background-color: green;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -122,7 +124,6 @@ p.hands.no-mt {
 
 #game-display-message {
     min-height: 30px;
-    background-color: green;
     text-align: center;
     padding: 0;
 
@@ -203,7 +204,6 @@ p.hands.no-mt {
 
 .game-controls-area {
     min-height: 50px;
-    background-color: green;
 }
 
 .game-controls {
@@ -216,8 +216,18 @@ p.hands.no-mt {
 
 button {
     font-size: 20px;
+    background-color: white;
+    border: 1px solid white;
+    color: black;
+    padding: 0px 10px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+button:hover {
     background-color: black;
-    color: white;
+    border: 1px solid white;
+    color: #00C700;
 }
 
 #btn-draw {
@@ -298,17 +308,23 @@ footer p a:hover {
     }
 }
 
+@media screen and (min-width: 400px) {
+    .card.face-down {
+        background-position-x: 5px;
+    }
+}
+
+
 @media screen and (min-width: 820px) {
     .card {
         margin: 30px 20px;
     }
-
+    
     .selected {
         margin-top: 5px;
         margin-bottom: 36px;
     }
 
-    
     .flex-main {
         flex-direction: row;
     }
@@ -338,6 +354,3 @@ footer p a:hover {
         display: block;
     }
 }
-
-
-
