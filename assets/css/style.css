@@ -81,12 +81,18 @@ li {
     width: 100%;
 }
 
+
 .winnings-half > p {
     margin: 0;
 }
 
 .winnings-half {
     width: 100%;
+}
+
+.winnings-half .winning-hand-img {
+    width: 25%;
+    
 }
 
 p.hands {
