@@ -55,77 +55,70 @@ function shuffle() {
     //     deck[location2] = tmp;
     // }
 
-//Royal Flush Test
-    // myHand[0] = deck[0];
-    // myHand[1] = deck[9];
-    // myHand[2] = deck[10];
-    // myHand[3] = deck[11];
-    // myHand[4] = deck[12];
+    //Royal Flush Test
+    // myHand[0] = deck[09];
+    // myHand[1] = deck[10];
+    // myHand[2] = deck[11];
+    // myHand[3] = deck[12];
+    // myHand[4] = deck[0];
 
-//Straight Flush Test
+    //Straight Flush Test
     // myHand[0] = deck[31];
     // myHand[1] = deck[32];
     // myHand[2] = deck[33];
     // myHand[3] = deck[34];
     // myHand[4] = deck[35];
 
-//Flush Test
+    //Flush Test
     // myHand[0] = deck[47];
     // myHand[1] = deck[44];
     // myHand[2] = deck[51];
     // myHand[3] = deck[41];
     // myHand[4] = deck[45];
-    
-//4 of a kind Test
+
+    //4 of a kind Test
     // myHand[0] = deck[7];
     // myHand[1] = deck[20];
     // myHand[2] = deck[33];
     // myHand[3] = deck[46];
     // myHand[4] = deck[43];
 
-//Full House
+    //Full House
     // myHand[0] = deck[4];
     // myHand[1] = deck[17];
     // myHand[2] = deck[36];
     // myHand[3] = deck[49];
     // myHand[4] = deck[10];
 
-//Straight
+    //Straight
     // myHand[0] = deck[15];
     // myHand[1] = deck[3];
     // myHand[2] = deck[4];
     // myHand[3] = deck[31];
     // myHand[4] = deck[45];
 
-//Straight A2345
-    // myHand[0] = deck[0];
-    // myHand[1] = deck[14];
-    // myHand[2] = deck[28];
-    // myHand[3] = deck[42];
-    // myHand[4] = deck[4];
+    //Straight A2345
+    myHand[0] = deck[0];
+    myHand[1] = deck[14];
+    myHand[2] = deck[28];
+    myHand[3] = deck[42];
+    myHand[4] = deck[4];
 
-//3 of a kind
+    //3 of a kind
     // myHand[0] = deck[11];
     // myHand[1] = deck[24];
     // myHand[2] = deck[37];
     // myHand[3] = deck[31];
     // myHand[4] = deck[41];
 
-//2 pair
+    //2 pair
     // myHand[0] = deck[35];
     // myHand[1] = deck[48];
     // myHand[2] = deck[51];
     // myHand[3] = deck[12];
     // myHand[4] = deck[18];
 
-//2 pair
-    // myHand[0] = deck[35];
-    // myHand[1] = deck[48];
-    // myHand[2] = deck[51];
-    // myHand[3] = deck[12];
-    // myHand[4] = deck[18];
-
-// pair of queens
+    // pair of queens
     // myHand[0] = deck[24];
     // myHand[1] = deck[50];
     // myHand[2] = deck[43];
@@ -136,7 +129,7 @@ function shuffle() {
     document.getElementById("winnings").style.display = "none";
     document.getElementById("btn-deal").style.display = "inline-block";
     //dispaly 5 images of back of cards on game table
-    renderHandFaceDown();   
+    renderHandFaceDown();
     displayMessage("Place Bet and Click Deal");
 
 }
@@ -171,11 +164,11 @@ function dealCards() {
     //take the bet amount chips from the current chips
     if (takeBet()) {
         //shuffle();
-        
+
         //deal 5 cards from the deck and add to hand
-        for (let i = 0; i < 5; i++) {
-            myHand[i] = deck.pop();
-        }
+        // for (let i = 0; i < 5; i++) {
+        //     myHand[i] = deck.pop();
+        // }
         //display the hand on the game table
         renderHand(myHand, true);
 
@@ -185,13 +178,13 @@ function dealCards() {
         displayMessage("Click Cards to Hold---------Click Draw to get new cards.");
     } else {
         displayMessage("Insufficent chips for this bet !!!!");
-    }   
+    }
 }
 
 /**
  * creates a new 5 card hand from held cards plus draw new cards from deck
  */
-function drawCards() { 
+function drawCards() {
     //new array to hold the cards that playerhas held
     let myHeldCards = [];
     //get the cards that are dealt
@@ -221,8 +214,8 @@ function drawCards() {
 function renderHandFaceDown() {
     document.getElementById('card-table').innerHTML = '';
     for (let i = 0; i < 5; i++) {
-        let card = document.createElement("div");      
-        card.className = "card face-down";       
+        let card = document.createElement("div");
+        card.className = "card face-down";
         document.getElementById("card-table").appendChild(card);
     }
 }
@@ -446,15 +439,27 @@ function isTwoPair(values) {
 }
 
 function isStraight(values) {
-    for (let i = 0; i < values.length - 1; i++) {
-        if (values[i + 1] != (values[i] + 1)) {
-            return false;
+    if (isStraight_ace_to_five(values)) {
+        return true;
+    } else {
+        for (let i = 0; i < values.length - 1; i++) {
+            if (values[i + 1] != (values[i] + 1)) {
+                return false;
+            }
         }
     }
     return true;
 
-    //to do: need code to check if straight is - A,2,3,4,5
+}
 
+function isStraight_ace_to_five(values) {
+    let straightAceLow = [2, 3, 4, 5, 14];
+    for (let i = 0; i < values.length; i++) {
+        if (values[i] != (straightAceLow[i])) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
@@ -585,7 +590,7 @@ function checkHighWin() {
 function checkLoWin() {
     indexCounter++;
     renderCard(myHand[indexCounter]);
-    if (hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1]) {      
+    if (hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1]) {
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
         //double the current winnings
         currentWinnings *= 2;
@@ -649,6 +654,6 @@ function load() {
 window.onload = load;
 
 
-window.onbeforeunload = function(e) {
+window.onbeforeunload = function (e) {
     return "Do you want to exit this page?";
 };
