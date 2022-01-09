@@ -560,17 +560,18 @@ function gambleWinnings(winMultiplyer) {
  */
 function checkHighWin() {
     indexCounter++;
+    let lose = false;
     renderCard(myHand[indexCounter]);
-    if ((hiLoValues[indexCounter] >= hiLoValues[indexCounter - 1])
-        || (hiLoValues[indexCounter] === 14 
-            || hiLoValues[indexCounter - 1] === 14)) {
+    if ((hiLoValues[indexCounter] >= hiLoValues[indexCounter - 1]) ||
+        (hiLoValues[indexCounter] === 14 ||
+            hiLoValues[indexCounter - 1] === 14)) {
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
         //double the current winnings
         currentWinnings *= 2;
         //display new winnings
         document.getElementById("winnings-amount").innerText = currentWinnings;
     } else {
-        displayMessage("Lose-Card is lower");
+        displayMessage("Lose - Card is lower");
         document.getElementById("winnings-amount").innerText = "0";
         setTimeout(shuffle, 5000);
         //hide the gamble winnings buttons
@@ -578,6 +579,7 @@ function checkHighWin() {
         document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
+        lose = true;
     }
     // checks if last card in hi/lo game and if so banks winnings and returns to main poker game
     if (indexCounter === 4) {
@@ -585,7 +587,11 @@ function checkHighWin() {
         //document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-        displayMessage("Max Gambles Reached !!!");
+        if (lose === true) {
+            displayMessage("Lose - Card is lower");
+        } else {
+            displayMessage("Max Gambles Reached !!!");
+        }
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
         let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
         let newChipsAmount = currentChipsAmount + currentWinnings;
@@ -599,10 +605,11 @@ function checkHighWin() {
  */
 function checkLoWin() {
     indexCounter++;
+    let lose = false;
     renderCard(myHand[indexCounter]);
-    if ((hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1])
-        || (hiLoValues[indexCounter] === 14 
-            || hiLoValues[indexCounter - 1] === 14)) {
+    if ((hiLoValues[indexCounter] <= hiLoValues[indexCounter - 1]) ||
+        (hiLoValues[indexCounter] === 14 ||
+            hiLoValues[indexCounter - 1] === 14)) {
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
         //double the current winnings
         currentWinnings *= 2;
@@ -617,13 +624,18 @@ function checkLoWin() {
         document.getElementById("winnings").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
+        lose = true;
     }
     // checks if last card in hi/lo game and if so banks winnings and returns to main poker game
     if (indexCounter === 4) {
         document.getElementById("btn-bank-win").style.display = "none";
         document.getElementById("btn-high").style.display = "none";
         document.getElementById("btn-low").style.display = "none";
-        displayMessage("Max Gambles Reached !!!");
+        if (lose === true) {
+            displayMessage("Lose - Card is higher");
+        } else {
+            displayMessage("Max Gambles Reached !!!");
+        }
         let currentWinnings = parseInt(document.getElementById("winnings-amount").innerText);
         let currentChipsAmount = parseInt(document.getElementById("current-chips").innerText);
         let newChipsAmount = currentChipsAmount + currentWinnings;
