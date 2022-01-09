@@ -21,12 +21,12 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
     * A site wide favicon will be implemented with the Hair O' The Dog clubs emblem.
     * This will provide an image in the the tabs header to allow the user to easily identify the website if they have multiple tabs open.
 
-![Favicon](docs/readme_images/favicon.JPG)
+![Favicon](docs/readme_images/favicon_image.PNG)
 * 404 Page
     * A 404 page will be implemented and will display if a user navigates to a broken link.
     * The 404 page will allow the user to easily navigate back to the main website if they direct to a broken link / missing page, without the need  of the browsers back button.
 
-![404](docs/readme_images/404_page.JPG)
+![404](docs/readme_images/404_image.PNG)
 
 *Home Page*
 
@@ -38,8 +38,7 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
   - A button will be on the home page that when clicked will direct the user to the main poker game.
   - This will allow the user to start the game after they have read and understood how the game works.
 
-![Play Game button image](docs/readme_images/play_game_button.PNG)  
-
+![Play game image](docs/readme_images/play_game_button.PNG)
 *Game Page*
 
 - Chip Balance
@@ -87,6 +86,8 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
   - If the user decides to bank the winnings, the winning chips will be added to the current chip balance. The user will then be able to start the next hand.
   - This will allow the user gamble and potentially increase their winning chips or take the safe option and bank the winnings.
 
+![Cards hold image](docs/readme_images/gamble_winnings.PNG)
+
 *Winning Hands*
 - Royal Flush
   - Ace, King, Queen, Jack and 10 of same suit
@@ -124,6 +125,7 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
   - pair of J, Q, K or A
     - Wins: Bet x 1
           
+![Cards hold image](docs/readme_images/winning_hands.PNG)
 
 ## Technolgies
 
@@ -184,4 +186,9 @@ Navigate to the GitHub Repository you want to clone to use locally:
 
 The project will now have been cloned on your local machine for use.
 
+## Credits 
 
+* [Accordion without javascript](https://supfort.com/pure-css-accordion-without-javascript)
+    * Code was used from this site to create the accordian effect on the adventures page sections for the hidden sections for each days travels. Styles were changed to suit styling on my Website.
+* [Youtube Gallery Filter Tutorial](https://www.youtube.com/watch?v=U-CujW5OlW0)
+    * Gallery page was created with inspiration from this video. I adapted code to use flexbox rather than css grid to make the page responsive on every device. 
