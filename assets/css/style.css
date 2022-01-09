@@ -13,7 +13,7 @@ header {
     display: flex;
     width: 100%;
     background-color: black;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 1px auto;
     max-height: 150px;
     border-radius: 5px;
     box-shadow: 3px 3px 5px;
@@ -91,7 +91,7 @@ li {
 }
 
 .winnings-half .winning-hand-img {
-    width: 25%;
+    width: 70%;
     
 }
 
@@ -358,5 +358,10 @@ footer p a:hover {
 
     .desktop-only {
         display: block;
+    }
+
+    .winnings-half .winning-hand-img {
+        width: 90%;
+        
     }
 }

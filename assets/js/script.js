@@ -128,6 +128,9 @@ function shuffle() {
 
     document.getElementById("winnings").style.display = "none";
     document.getElementById("btn-deal").style.display = "inline-block";
+    document.getElementById("current-chips-container").style.display = "inline-block";
+    document.getElementById("bet-amount-container").style.display = "inline-block";
+    document.getElementById("bet-amount").disabled = false;
     //dispaly 5 images of back of cards on game table
     renderHandFaceDown();
     displayMessage("Place Bet and Click Deal");
@@ -175,6 +178,8 @@ function dealCards() {
         //hide the deal button after the initial deal and display the draw button
         document.getElementById("btn-deal").style.display = "none";
         document.getElementById("btn-draw").style.display = "inline-block";
+        // disable bet input after deal is clicked
+        document.getElementById("bet-amount").disabled = true;
         displayMessage("Click Cards to Hold---------Click Draw to get new cards.");
     } else {
         displayMessage("Insufficent chips for this bet !!!!");
@@ -543,6 +548,9 @@ function gambleWinnings(winMultiplyer) {
     renderCard(myHand[indexCounter]);
 
     displayMessage("Bank your winnings or Gamble High/Low to double winnings    -    Max of 5 cards!");
+
+    document.getElementById("current-chips-container").style.display = "none";
+    document.getElementById("bet-amount-container").style.display = "none";
 
 
 }
