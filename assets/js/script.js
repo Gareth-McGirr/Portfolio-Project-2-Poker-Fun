@@ -7,15 +7,12 @@ let indexCounter = 0;
 //global array variable for high/low game card values.
 let hiLoValues = [];
 
-
-
 //event listeners for buttons
 document.getElementById("btn-deal").addEventListener("click", dealCards);
 document.getElementById("btn-draw").addEventListener("click", drawCards);
 document.getElementById('btn-bank-win').addEventListener('click', bankWinnings);
 document.getElementById('btn-high').addEventListener('click', checkHighWin);
 document.getElementById('btn-low').addEventListener('click', checkLoWin);
-
 
 /**
  * creates a deck of 52 card objects using values and suits
@@ -42,6 +39,7 @@ function getDeck() {
 
 /**
  * Shuffle the deck by switching two random cards for 1000 turns
+ * 
  */
 function shuffle() {
     deck = getDeck();
@@ -55,81 +53,12 @@ function shuffle() {
         deck[location2] = tmp;
     }
 
-    //Royal Flush Test
-    // myHand[0] = deck[09];
-    // myHand[1] = deck[10];
-    // myHand[2] = deck[11];
-    // myHand[3] = deck[12];
-    // myHand[4] = deck[0];
-
-    //Straight Flush Test
-    // myHand[0] = deck[31];
-    // myHand[1] = deck[32];
-    // myHand[2] = deck[33];
-    // myHand[3] = deck[34];
-    // myHand[4] = deck[35];
-
-    //Flush Test
-    // myHand[0] = deck[47];
-    // myHand[1] = deck[44];
-    // myHand[2] = deck[51];
-    // myHand[3] = deck[41];
-    // myHand[4] = deck[45];
-
-    //4 of a kind Test
-    // myHand[0] = deck[7];
-    // myHand[1] = deck[20];
-    // myHand[2] = deck[33];
-    // myHand[3] = deck[46];
-    // myHand[4] = deck[43];
-
-    //Full House
-    // myHand[0] = deck[4];
-    // myHand[1] = deck[17];
-    // myHand[2] = deck[36];
-    // myHand[3] = deck[49];
-    // myHand[4] = deck[10];
-
-    //Straight
-    // myHand[0] = deck[15];
-    // myHand[1] = deck[3];
-    // myHand[2] = deck[4];
-    // myHand[3] = deck[31];
-    // myHand[4] = deck[45];
-
-    //Straight A2345
-    // myHand[0] = deck[0];
-    // myHand[1] = deck[14];
-    // myHand[2] = deck[28];
-    // myHand[3] = deck[42];
-    // myHand[4] = deck[4];
-
-    //3 of a kind
-    // myHand[0] = deck[11];
-    // myHand[1] = deck[24];
-    // myHand[2] = deck[37];
-    // myHand[3] = deck[31];
-    // myHand[4] = deck[41];
-
-    //2 pair
-    // myHand[0] = deck[35];
-    // myHand[1] = deck[48];
-    // myHand[2] = deck[51];
-    // myHand[3] = deck[12];
-    // myHand[4] = deck[18];
-
-    // pair of queens
-    // myHand[0] = deck[24];
-    // myHand[1] = deck[50];
-    // myHand[2] = deck[43];
-    // myHand[3] = deck[12];
-    // myHand[4] = deck[18];
-
-
+    //Show or hide buttons
     document.getElementById("winnings").style.display = "none";
     document.getElementById("btn-deal").style.display = "inline-block";
     document.getElementById("current-chips-container").style.display = "inline-block";
     document.getElementById("bet-amount-container").style.display = "inline-block";
+    //enable the bet input field
     document.getElementById("bet-amount").disabled = false;
     //dispaly 5 images of back of cards on game table
     renderHandFaceDown();
@@ -166,8 +95,6 @@ function takeBet() {
 function dealCards() {
     //take the bet amount chips from the current chips
     if (takeBet()) {
-        //shuffle();
-
         //deal 5 cards from the deck and add to hand
         for (let i = 0; i < 5; i++) {
             myHand[i] = deck.pop();
@@ -206,6 +133,7 @@ function drawCards() {
     for (let i = myHeldCards.length; i < 5; i++) {
         myHeldCards[i] = deck.pop();
     }
+    
 
     //display new hand on the game table
     renderHand(myHeldCards, false);
@@ -443,6 +371,11 @@ function isTwoPair(values) {
     }
 }
 
+/**
+ * check if passed array is sequential values 
+ * @param {Array} values 
+ * @returns boolean
+ */
 function isStraight(values) {
     if (isStraight_ace_to_five(values)) {
         return true;
@@ -456,6 +389,7 @@ function isStraight(values) {
     return true;
 
 }
+
 
 function isStraight_ace_to_five(values) {
     let straightAceLow = [2, 3, 4, 5, 14];
@@ -479,7 +413,6 @@ function checkHandForWin(cards) {
     } else if (isStraightFlush(cards)) {
         displayMessage("Straight Flush");
         setTimeout(gambleWinnings, 3000, 60);
-        //gambleWinnings(60);
     } else if (isFourOfKind(sortCardsByValue(cards))) {
         displayMessage("Four of a kind");
         setTimeout(gambleWinnings, 3000, 25);

@@ -16,9 +16,11 @@
 
 <body>
     <header>
+        <!-- site logo -->
         <div class="logo">
             <img src="assets/images/logo.png" alt="Poker Fun logo" id="logo">
         </div>
+        <!-- Navigfation menu -->
         <nav id="menu">
             <ul>
                 <li>
@@ -32,9 +34,11 @@
         </nav>
     </header>
     <main>
+        
         <div id="card-table">
-
+            <!-- Empty div to hold cards that are rendered dynamically by javascript code-->
         </div>
+        <!-- Initial message to user(message is changed throughout the game by javascript code) -->
         <div id="game-display-message">Place Bet and Click Deal</div>
         <div class="game-controls-area">
             <div id="current-chips-container" class="game-controls">
@@ -44,6 +48,7 @@
                 <label for="bet-amount">BET:</label>
                 <input id="bet-amount" type="number" value="10" step="10">
             </div>
+            <!-- create buttons for game play (different buttons will be set as displayed through game stages)-->
             <div class="game-controls">
                 <button id="btn-deal">Deal</button>
                 <button id="btn-draw">Draw</button>
@@ -57,7 +62,7 @@
 
         </div>
     </main>
-
+    <!-- Footer with external link and icon -->
     <footer>
         <p>Follow me on Github
             <a href="https://github.com/Gareth-McGirr/" target="_blank" rel="noopener"

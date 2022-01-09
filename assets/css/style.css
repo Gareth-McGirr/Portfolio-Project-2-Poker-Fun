@@ -234,6 +234,7 @@ button:hover {
     color: #00C700;
 }
 
+/* default display properties for buttons */
 #btn-draw {
     display: none;
 }
@@ -259,6 +260,7 @@ button:hover {
     width: 50px;
 }
 
+/* Footer Area */
 footer {
     flex-shrink: 0;
     background: black;
@@ -304,6 +306,8 @@ footer p a:hover {
     padding-bottom: 10px;
 }
 
+
+/* Media queries to make pages responsiveness on different screen sizes*/
 @media screen and (min-width: 320px) and (max-width: 767px) {
     .card {
         margin: 30px 3px;
