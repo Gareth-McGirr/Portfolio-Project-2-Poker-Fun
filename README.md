@@ -398,4 +398,6 @@ The project will now have been cloned on your local machine for use.
 
 * [Create the deck of cards and shuffle](https://www.thatsoftwaredude.com/content/6196/coding-a-card-deck-in-javascript)
     * Code was used from this site to create the deck of cards and shuffle. Styles were changed to suit styling on my Website.
+* Website Logo and felt background image was created by my wife [Daisy McGirr](https://github.com/Daisy-McG) using Canva.
+* My Mentor Chris Quinn for his guidance and support throughout my project.
 
