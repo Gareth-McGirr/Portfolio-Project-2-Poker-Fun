@@ -356,6 +356,27 @@ High/Low game was tested to ensure the game functioned as expected by playing th
 * If the maximum limit of 5 cards has been drawn, the high low game ends and winnings are added to the current chip balance as expected.
 * At any stage in the High/Lo game, if the 'Bank Winnings' button is clicked, the current winnings are added to the current chips value.
 
+**Validator Testing**
+
+- HTML
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org)
+
+![Home HTML Validator Results](docs/readme_images/home_validator.PNG)
+
+![Game Page](docs/readme_images/game_validator.PNG)
+
+![404 Page](docs/readme_images/404_validator.PNG)
+
+- CSS
+  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org)
+
+![CSS Validator Results](docs/readme_images/css_validator.PNG)
+
+- JavaScript
+  - No errors were returned when passing through the [JShint validator](https://jshint.com/)
+  - A warning appeared for one function as an unused variable but the function is being used directly as an onkeyup event on the card divs.
+
+![JavaScript Validator Results](docs/readme_images/js_validator.PNG)
 
 ## Deployment
 
