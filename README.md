@@ -2,7 +2,7 @@
 
 Poker Fun is a JavaScript game built to allow users to play a game of poker online for fun. It was built to work like the original poker arcade games and is single player.
 
-// Mock Up
+![Mock Up](docs/readme_images/mockup.PNG)
 
 ## Features
 
@@ -18,7 +18,7 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
 
 ![Footer image](docs/readme_images/footer.PNG)
 * Favicon
-    * A site wide favicon will be implemented with the Hair O' The Dog clubs emblem.
+    * A site wide favicon will be implemented with a red poker chip.
     * This will provide an image in the the tabs header to allow the user to easily identify the website if they have multiple tabs open.
 
 ![Favicon](docs/readme_images/favicon_image.PNG)
@@ -39,6 +39,7 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
   - This will allow the user to start the game after they have read and understood how the game works.
 
 ![Play game image](docs/readme_images/play_game_button.PNG)
+
 *Game Page*
 
 - Chip Balance
