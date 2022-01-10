@@ -53,6 +53,7 @@ nav ul {
 
 main {
     background-image: url(../images/felt.png);
+    background-color: #003D00;
     text-align: center;
     flex: 1 0 auto;
     border-radius: 5px;
