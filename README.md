@@ -308,17 +308,25 @@ myHand[4] = deck[18];
 ```
 All hands functioned as expected and gave the correct types and winnings.
 
+**Hold Cards**
+
+Testing was performed to ensure cards could be held and when new cards were drawn, the selected cards remained. Thhis was done by selecting 2 cards from the dealt cards, then pressing the draw button.
+
+When new cards were drawn, the held cards were still in the drawn cards as expected.
+
 **Game Board**
 
 Testing was done to ensure the correct messages were displayed at the appropriate time by playing the game. The following messages are displayed:
 
-* No winning hand
-* Place bet instructions
-* Hold card instructions
-* Winning hand name displayed
-* High low instructions
-* Lose High/Lo with wrong High guess
-* Lose High/Lo with wrong Low guess
+* No winning hand - Displayed when no winning hand has been dealt.
+* Place bet instructions - Shown when facedown cards are drawn.
+* Hold card instructions - Shown after user has clicked the 'Deal' button.
+* Winning hand name displayed - Shown if winning hand after user has clicked the draw button after a deal/hold.
+* High low instructions - Shown during high low game that is initiated if a user had a winning hand.
+* Lose High/Lo with wrong High guess - Shown if user guesses 'High' but the card drawn was a lower value than the previous card.
+* Lose High/Lo with wrong Low guess - Shown if user guesses 'Low' but the card drawn was a higher value than the previous card.
+
+All messages were displayed as expected.
 
 **High/Low**
 
