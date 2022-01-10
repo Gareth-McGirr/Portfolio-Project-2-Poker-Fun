@@ -133,7 +133,7 @@ function drawCards() {
     for (let i = myHeldCards.length; i < 5; i++) {
         myHeldCards[i] = deck.pop();
     }
-    
+
 
     //display new hand on the game table
     renderHand(myHeldCards, false);
@@ -166,19 +166,31 @@ function renderHand(hand, isDeal) {
         let card = document.createElement("div");
         let value = document.createElement("div");
         let suit = document.createElement("div");
+        let suitSR = document.createElement("span");
+        let cardSR = document.createElement("span");
         let hold = document.createElement("div");
         // add classes to the elements
         card.className = "card dealt-card";
         value.className = "value";
         suit.className = "suit " + hand[i].suit;
+        // screen reader class, reads on assistive technology but doesn't display
+        suitSR.className = "sr-only";
+        cardSR.className = "sr-only";
         hold.className = "hold";
+        // add attribute to work with enter key
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("onkeyup", "enterHold(event, this)");
 
         // add relevent value
         value.innerHTML = hand[i].value;
+        cardSR.innerHTML = "Click to hold card";
+        suitSR.innerHTML = hand[i].suit;
         hold.innerHTML = "Hold";
         // create image inside card
         card.appendChild(value);
         card.appendChild(suit);
+        card.appendChild(suitSR);
+        card.appendChild(cardSR);
         card.appendChild(hold);
 
         //if it is the deal then add click event to each card displayed
@@ -190,7 +202,23 @@ function renderHand(hand, isDeal) {
         // add the card to the game table
         document.getElementById("card-table").appendChild(card);
     }
+    // After card is drawn, focus on first card
+    let cards = document.querySelectorAll(".card.dealt-card");
+    cards[0].focus();
+}
 
+/**
+ * checks if enter key is pressed
+ * clicks to hold card
+ * @param {Event} 
+ * @param {element} card
+ */
+ function enterHold(event, element) {
+    if (event.key === 'Enter') {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        element.click();
+    }
 }
 
 /**
@@ -243,9 +271,9 @@ function isRoyalFlush(cards) {
 }
 
 /**
- * 
- * @param {*} cards 
- * @returns 
+ *  Checks if cards are a straight flush
+ * @param {Array} cards 
+ * @returns boolean
  */
 function isStraightFlush(cards) {
     if (isFlush(cards) && isStraight(sortCardsByValue(cards))) {
