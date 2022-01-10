@@ -231,6 +231,8 @@ function renderCard(aCard) {
     let suit = document.createElement("div");
     let hold = document.createElement("div");
     card.className = "card dealt-card";
+    // make card tabbable
+    card.setAttribute("tabindex", "0");
     value.className = "value";
     suit.className = "suit " + aCard.suit;
 
@@ -239,6 +241,8 @@ function renderCard(aCard) {
     card.appendChild(suit);
     card.appendChild(hold);
     document.getElementById("card-table").appendChild(card);
+    // focus drawn card
+    card.focus();
 }
 
 /**
