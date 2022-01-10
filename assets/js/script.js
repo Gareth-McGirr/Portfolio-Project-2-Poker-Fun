@@ -33,7 +33,6 @@ function getDeck() {
             deck.push(card);
         }
     }
-
     return deck;
 }
 
@@ -134,7 +133,6 @@ function drawCards() {
         myHeldCards[i] = deck.pop();
     }
 
-
     //display new hand on the game table
     renderHand(myHeldCards, false);
     checkHandForWin(myHeldCards);
@@ -213,7 +211,7 @@ function renderHand(hand, isDeal) {
  * @param {Event} 
  * @param {element} card
  */
- function enterHold(event, element) {
+function enterHold(event, element) {
     if (event.key === 'Enter') {
         // Cancel the default action, if needed
         event.preventDefault();
@@ -285,9 +283,8 @@ function isStraightFlush(cards) {
     } else {
         return false;
     }
-
-
 }
+
 /**
  *  Converts face cards into values
  * @param {*} cards 
@@ -419,10 +416,13 @@ function isStraight(values) {
         }
     }
     return true;
-
 }
 
-
+/**
+ * check if passed array is sequential values A, 2, 3, 4, 5
+ * @param {Array} values 
+ * @returns boolean
+ */
 function isStraight_ace_to_five(values) {
     let straightAceLow = [2, 3, 4, 5, 14];
     for (let i = 0; i < values.length; i++) {
@@ -470,7 +470,6 @@ function checkHandForWin(cards) {
         displayMessage("No Winning hand");
         setTimeout(shuffle, 3000);
     }
-
 }
 
 /**
@@ -516,8 +515,6 @@ function gambleWinnings(winMultiplyer) {
 
     document.getElementById("current-chips-container").style.display = "none";
     document.getElementById("bet-amount-container").style.display = "none";
-
-
 }
 
 /**
@@ -607,7 +604,6 @@ function checkLoWin() {
         document.getElementById("current-chips").innerText = newChipsAmount;
         setTimeout(shuffle, 5000);
     }
-
 }
 
 /**
