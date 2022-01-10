@@ -4,6 +4,8 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
 
 ![Mock Up](docs/readme_images/mockup.PNG)
 
+[Poker Fun Live Link](https://gareth-mcgirr.github.io/Portfolio-Project-2-Poker-Fun)
+
 ## Features
 
 ### Site wide
