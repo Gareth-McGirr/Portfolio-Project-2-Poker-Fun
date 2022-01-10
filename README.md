@@ -130,6 +130,19 @@ Poker Fun is a JavaScript game built to allow users to play a game of poker onli
           
 ![Cards hold image](docs/readme_images/winning_hands.PNG)
 
+## Wireframes
+
+- Home page
+
+![Home page wireframe](docs/wireframes/home_wireframes.JPG)
+
+- Game page
+
+![Home page wireframe](docs/wireframes/game_page.JPG)
+
+- 404 page
+
+![Home page wireframe](docs/wireframes/404_page.JPG)
 ## Technolgies
 
 - HTML
