@@ -378,6 +378,13 @@ High/Low game was tested to ensure the game functioned as expected by playing th
 
 ![JavaScript Validator Results](docs/readme_images/js_validator.PNG)
 
+**Lighthouse Report**
+
+Lighthouse report generated showed a 93 SEO rating due to no meta descriptions. Meta descriptions were then added to the page to raise this. The lowest score on any section was 94 for performance.
+
+![Lighthouse report](docs/readme_images/lighthouse.PNG)
+
+
 ## Deployment
 
 ### Version Control
